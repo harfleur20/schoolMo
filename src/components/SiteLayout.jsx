@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  ArrowRight,
-  Menu,
-  X,
-} from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import logo from "../../Assets/logo_site_web.png";
@@ -122,9 +118,13 @@ export function SiteLayout() {
           <div className="footer-brand-block">
             <img className="footer-logo" src={logo} alt="Logo SchoolMo" />
             <p className="footer-brand-text">
-              "Une nouvelle chance de mieux faire... et d'aller plus loin."
+              <span className="footer-quote">
+                "Une nouvelle chance de mieux faire... et d'aller plus loin."
+              </span>
               <br />
-              On ne vend pas du rêve. On construit des parcours.
+              <span className="footer-motto">
+                On ne vend pas du rêve. On construit des parcours.
+              </span>
             </p>
             <div className="footer-contact-chips">
               {socialLinks.map((socialLink) => {
