@@ -108,32 +108,38 @@ export function TestimonialsSection({ marquee = false, title, text }) {
 }
 
 function TestimonialCard({ card }) {
+  const link = card.type === "video"
+    ? "/temoignages#videos"
+    : "/temoignages#avis-ecrits";
+
   return (
     <article className="testimonial-card">
-      {card.type === "video" ? (
-        <div className="testimonial-video">
-          <video autoPlay loop muted playsInline preload="metadata">
-            <source src={card.video} type="video/mp4" />
-          </video>
-          <div className="video-chip">
-            <MessageCircle size={16} />
-            Video
+      <NavLink to={link} className="testimonial-card-link">
+        {card.type === "video" ? (
+          <div className="testimonial-video">
+            <video autoPlay loop muted playsInline preload="metadata">
+              <source src={card.video} type="video/mp4" />
+            </video>
+            <div className="video-chip">
+              <MessageCircle size={16} />
+              Video
+            </div>
+            <div className="testimonial-meta testimonial-meta-overlay">
+              <strong>{card.name}</strong>
+              <span>{card.subtitle}</span>
+            </div>
           </div>
-          <div className="testimonial-meta testimonial-meta-overlay">
-            <strong>{card.name}</strong>
-            <span>{card.subtitle}</span>
+        ) : (
+          <div className="testimonial-quote">
+            <QuoteBubble />
+            <p>{card.quote}</p>
+            <div className="testimonial-meta">
+              <strong>{card.name}</strong>
+              <span>{card.subtitle}</span>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="testimonial-quote">
-          <QuoteBubble />
-          <p>{card.quote}</p>
-          <div className="testimonial-meta">
-            <strong>{card.name}</strong>
-            <span>{card.subtitle}</span>
-          </div>
-        </div>
-      )}
+        )}
+      </NavLink>
     </article>
   );
 }
@@ -143,7 +149,7 @@ export function PartnersGridSection({ title, text }) {
     <section className="section section-light">
       <div className="section-shell">
         <motion.div className="section-heading" {...revealProps}>
-          <span className="section-tag section-tag-light">Nos écoles</span>
+          <span className="section-tag section-tag-light">Nos écoles partenaires</span>
           <h2>{title}</h2>
           <p>{text}</p>
         </motion.div>

@@ -95,6 +95,9 @@ export function NotreHistoirePage() {
                   <li key={i}>{a}</li>
                 ))}
               </ul>
+              <blockquote className="histoire-founder-quote">
+                &laquo;&nbsp;Je ne suis pas parti de rien. Je suis parti de moins que rien. Et c&apos;est pour ça que je sais que c&apos;est possible pour toi aussi.&nbsp;&raquo;
+              </blockquote>
             </div>
           </motion.div>
         </div>

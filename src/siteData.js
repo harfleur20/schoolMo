@@ -363,6 +363,107 @@ export const testimonialCards = [
   },
 ];
 
+export const temoignagesStats = [
+  { value: "+100", label: "Membres communauté WhatsApp" },
+  { value: "+2 000", label: "Visas obtenus" },
+];
+
+export const videoTestimonials = [
+  {
+    id: "vid-1",
+    title: "De Yaoundé à Lyon — mon parcours avec SchoolMo",
+    name: "Armand K.",
+    info: "23 ans | Yaoundé → Lyon",
+    video: temoignageVideo1,
+  },
+  {
+    id: "vid-2",
+    title: "À 41 ans, j'ai obtenu mon visa étudiant",
+    name: "Paul N.",
+    info: "36 ans | Yaoundé → Bordeaux",
+    video: temoignageVideo2,
+  },
+  {
+    id: "vid-3",
+    title: "Mon dossier accepté du premier coup",
+    name: "Stéphanie M.",
+    info: "32 ans | Douala → Paris",
+    video: null,
+  },
+  {
+    id: "vid-4",
+    title: "En reconversion à 39 ans — c'est possible",
+    name: "Christine T.",
+    info: "39 ans | Douala → Nantes",
+    video: null,
+  },
+  {
+    id: "vid-5",
+    title: "Ce que personne ne m'avait dit sur le visa",
+    name: "Kevin A.",
+    info: "46 ans | Yaoundé → Toulouse",
+    video: null,
+  },
+  {
+    id: "vid-6",
+    title: "SchoolMo m'a sauvé d'une arnaque",
+    name: "Mireille E.",
+    info: "34 ans | Douala → Rennes",
+    video: null,
+  },
+];
+
+export const writtenTestimonials = [
+  {
+    id: "rev-1",
+    initials: "AK",
+    name: "Armand Kouakam",
+    meta: "23 ans | Yaoundé → Lyon | Master Finance",
+    quote:
+      "J'avais postulé seul une première fois — refus. Avec SchoolMo, on a reconstruit mon dossier de zéro. Visa obtenu du premier coup. Je suis maintenant en Master 1 à Lyon !",
+  },
+  {
+    id: "rev-2",
+    initials: "PN",
+    name: "Paul Ngoro",
+    meta: "31 ans | Douala → Bordeaux | Reconversion",
+    quote:
+      "À 31 ans, j'avais toutes les raisons de poser la question. SchoolMo a étudié mon cas sérieusement et m'a accompagné jusqu'au bout. J'ai obtenu mon visa. Ma vie a recommencé.",
+  },
+  {
+    id: "rev-3",
+    initials: "SM",
+    name: "Stéphanie Mboua",
+    meta: "32 ans | Douala → Paris | Licence Pro",
+    quote:
+      "Ce que j'ai le plus apprécié, c'est l'honnêteté. SchoolMo m'a dit exactement ce que mon dossier avait de faible — sans me décourager. On a travaillé ensemble. Et ça a marché.",
+  },
+  {
+    id: "rev-4",
+    initials: "ME",
+    name: "Mireille Eloa",
+    meta: "34 ans | Douala → Rennes | STO Management",
+    quote:
+      "J'avais failli tomber dans le piège d'une fausse agence. Un ami m'a parlé de SchoolMo. La différence était immédiate — pas de promesses impossibles. Juste du sérieux.",
+  },
+  {
+    id: "rev-5",
+    initials: "CT",
+    name: "Christine Tamba",
+    meta: "39 ans | Douala → Reconversion web",
+    quote:
+      "Je voulais me reconvertir dans l'informatique à 39 ans. Tout le monde disait que c'était trop tard. SchoolMo m'a aidé à construire un projet qui a convaincu le consulat.",
+  },
+  {
+    id: "rev-6",
+    initials: "EF",
+    name: "Mme Epse Fotso",
+    meta: "Parent | Cameroun → Toulouse",
+    quote:
+      "Mon fils voulait partir en France et je ne savais pas à qui faire confiance. SchoolMo a tout expliqué — à lui et à moi. Il est aujourd'hui à Toulouse. Je dors tranquille.",
+  },
+];
+
 export const partnershipLogos = [
   { src: eceLogo, alt: "Logo ECE", label: "ECE", city: "Paris" },
   { src: edcLogo, alt: "Logo EDC Paris Business School", label: "EDC Paris", city: "Paris" },
@@ -457,9 +558,10 @@ export const pageIntros = {
     text: "Derrière SchoolMo, il y a un parcours inattendu. Une conviction profonde que les trajectoires les plus belles ne sont pas toujours les plus droites.",
   },
   temoignages: {
-    tag: "Témoignages",
-    title: "Des parcours réels, pas des promesses creuses.",
-    text: "Cette page rassemble des retours d'expérience, des vidéos et des citations pour montrer ce que SchoolMo apporte concrètement aux projets d'études vers la France.",
+    tag: "Témoignages & Communauté",
+    title: "Ils ont osé. Ils sont partis.",
+    accent: "Ils témoignent.",
+    text: "Plus de 100 membres actifs dans notre communauté WhatsApp. Des centaines de parcours accompagnés, des visas obtenus, des vies transformées.",
   },
 };
 
