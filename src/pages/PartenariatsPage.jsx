@@ -9,13 +9,13 @@ import "react-phone-number-input/style.css";
 import {
   ClosingBanner,
   PageIntro,
-  PartnersGridSection,
 } from "../components/SharedSections";
 import siteIcon from "../../Assets/icon.png";
 import {
   pageIntros,
   partnerBenefits,
   partnershipBullets,
+  partnershipLogos,
   partnershipStats,
   revealProps,
   whatsappBaseLink,
@@ -32,15 +32,40 @@ export function PartenariatsPage() {
         dark
       />
 
-      <PartnersGridSection
-        title={
-          <>
-            Des écoles françaises reconnues{" "}
-            <span>qui nous font confiance</span>.
-          </>
-        }
-        text="SchoolMo travaille avec des établissements reconnus qui font confiance à notre processus de sélection et d'accompagnement."
-      />
+      <section className="section section-light">
+        <div className="section-shell">
+          <motion.div className="section-heading" {...revealProps}>
+            <span className="section-tag section-tag-light">
+              Nos partenaires en France
+            </span>
+            <h2>
+              Des écoles françaises reconnues{" "}
+              <span>qui nous font confiance</span>
+            </h2>
+            <p>
+              Ces établissements travaillent avec SchoolMo pour accueillir des
+              étudiants africains sérieux et bien préparés. Leur confiance,
+              c&apos;est ta garantie.
+            </p>
+          </motion.div>
+
+          <motion.div className="logo-grid partner-logo-grid" {...revealProps}>
+            {partnershipLogos.map((partner) => (
+              <article key={partner.label} className="logo-card partner-logo-card">
+                <img src={partner.src} alt={partner.alt} />
+                <small>{partner.city}</small>
+              </article>
+            ))}
+          </motion.div>
+
+          <motion.aside className="partner-note" {...revealProps}>
+            Ces écoles font confiance à SchoolMo pour la qualité des dossiers
+            qu&apos;on prépare. Pour toi, étudiant africain, c&apos;est un
+            avantage concret : ton dossier est connu, attendu, et pris au
+            sérieux.
+          </motion.aside>
+        </div>
+      </section>
 
       <PartnerRecruitSection />
 

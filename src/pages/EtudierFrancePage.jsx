@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   ClosingBanner,
   ContactSection,
@@ -22,10 +22,23 @@ import studyImage from "/Assets/women-traveling-together-paris.jpg";
 
 export function EtudierFrancePage() {
   const [expandedFaq, setExpandedFaq] = useState(null);
+  const CARDS_PER_SLIDE = 2;
+  const [errorIndex, setErrorIndex] = useState(0);
+  const totalSlides = Math.ceil(visaErrorCategories.length / CARDS_PER_SLIDE);
+  const prevError = () => setErrorIndex((i) => (i - 1 + totalSlides) % totalSlides);
+  const nextError = () => setErrorIndex((i) => (i + 1) % totalSlides);
+  const isPaused = useRef(false);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (!isPaused.current) setErrorIndex((i) => (i + 1) % totalSlides);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [totalSlides]);
 
   return (
     <>
       <PageIntro
+        id="etude-france-hero"
         tag={pageIntros.etudes.tag}
         title={pageIntros.etudes.title}
         accent={pageIntros.etudes.accent}
@@ -91,36 +104,60 @@ export function EtudierFrancePage() {
             <p>Ces situations sont récurrentes. Voici comment les éviter.</p>
           </motion.div>
 
-          <div className="error-grid">
-            {visaErrorCategories.map((category) => {
-              const Icon = category.icon;
+          <div
+            className="error-carousel"
+            onMouseEnter={() => { isPaused.current = true; }}
+            onMouseLeave={() => { isPaused.current = false; }}
+          >
+            <button className="error-carousel-btn" onClick={prevError} aria-label="Précédent">
+              <ChevronLeft size={22} />
+            </button>
 
-              return (
-                <motion.article
-                  key={category.title}
-                  className="error-card"
-                  {...revealProps}
-                >
-                  <div className="error-header">
-                    <div className="error-icon">
-                      <Icon size={24} />
+            <motion.div
+              key={errorIndex}
+              className="error-carousel-track"
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.25 }}
+            >
+              {visaErrorCategories.slice(errorIndex * CARDS_PER_SLIDE, errorIndex * CARDS_PER_SLIDE + CARDS_PER_SLIDE).map((category, localIdx) => {
+                const Icon = category.icon;
+                const cardNumber = String(errorIndex * CARDS_PER_SLIDE + localIdx + 1).padStart(2, "0");
+                return (
+                  <article key={category.title} className="error-card">
+                    <span className="error-card-number">{cardNumber}</span>
+                    <div className="error-header">
+                      <div className="error-icon"><Icon size={24} /></div>
+                      <h3>{category.title}</h3>
                     </div>
-                    <h3>{category.title}</h3>
-                  </div>
-                  <p className="error-description">{category.description}</p>
-                  <ul className="error-list">
-                    {category.errors.map((error, index) => (
-                      <li key={index}>
-                        <span>{error}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="error-highlight">
-                    <strong>💡 {category.highlight}</strong>
-                  </div>
-                </motion.article>
-              );
-            })}
+                    <p className="error-description">{category.description}</p>
+                    <ul className="error-list">
+                      {category.errors.map((error, i) => (
+                        <li key={i}><span>{error}</span></li>
+                      ))}
+                    </ul>
+                    <div className="error-highlight">
+                      <strong>💡 {category.highlight}</strong>
+                    </div>
+                  </article>
+                );
+              })}
+            </motion.div>
+
+            <button className="error-carousel-btn" onClick={nextError} aria-label="Suivant">
+              <ChevronRight size={22} />
+            </button>
+          </div>
+
+          <div className="error-carousel-dots">
+            {Array.from({ length: totalSlides }).map((_, i) => (
+              <button
+                key={i}
+                className={`error-dot${i === errorIndex ? " is-active" : ""}`}
+                onClick={() => setErrorIndex(i)}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -173,17 +210,20 @@ export function EtudierFrancePage() {
                   <span>{item.question}</span>
                   <ChevronDown size={18} />
                 </button>
-                {expandedFaq === index && (
-                  <motion.div
-                    className="faq-answer"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <p>{item.answer}</p>
-                  </motion.div>
-                )}
+                <AnimatePresence initial={false}>
+                  {expandedFaq === index && (
+                    <motion.div
+                      className="faq-answer"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      style={{ overflow: "hidden" }}
+                    >
+                      <p>{item.answer}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             ))}
           </div>

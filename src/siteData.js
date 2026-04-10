@@ -22,6 +22,7 @@ import eceLogo from "../Assets/ECE_LOGO_2021_web.png";
 import ebsLogo from "../Assets/ebs-paris-european-business-school-logo-vector.png";
 import inseecLogo from "../Assets/ecole-inseec-formations.webp";
 import edcLogo from "../Assets/EDC_PARIS_BUSINESS_SCHOOL_LOGO_MONOCHROME_BLEU.png";
+import isenLogo from "../Assets/ISEN_Méditerranée_Logo.png";
 import temoignageVideo1 from "../Assets/temoignage_1.mp4";
 import temoignageVideo2 from "../Assets/temoignage_2.mp4";
 import heroSlideVisa from "../Assets/schhollMo_image.png";
@@ -355,10 +356,39 @@ export const testimonialCards = [
 ];
 
 export const partnershipLogos = [
-  { src: eceLogo, alt: "Logo ECE", label: "ECE" },
-  { src: edcLogo, alt: "Logo EDC Paris Business School", label: "EDC Paris" },
-  { src: ebsLogo, alt: "Logo European Business School", label: "EBS Paris" },
-  { src: inseecLogo, alt: "Logo INSEEC", label: "INSEEC" },
+  { src: eceLogo, alt: "Logo ECE", label: "ECE", city: "Paris" },
+  { src: edcLogo, alt: "Logo EDC Paris Business School", label: "EDC Paris", city: "Paris" },
+  { src: ebsLogo, alt: "Logo European Business School", label: "EBS Paris", city: "Paris" },
+  { src: inseecLogo, alt: "Logo INSEEC", label: "INSEEC", city: "Paris, Bordeaux, Lyon" },
+  { src: isenLogo, alt: "Logo ISEN", label: "ISEN", city: "Paris, Lille, Brest" },
+];
+
+export const partnerSchools = [
+  {
+    acronym: "INSEEC",
+    fullName: "INSEEC Business School",
+    city: "Paris, Bordeaux, Lyon",
+  },
+  {
+    acronym: "EDC",
+    fullName: "EDC Paris Business School",
+    city: "Paris",
+  },
+  {
+    acronym: "ECE",
+    fullName: "ECE Paris — École d'Ingénieurs",
+    city: "Paris",
+  },
+  {
+    acronym: "ISEN",
+    fullName: "ISEN Yncréa — École d'Ingénieurs",
+    city: "Paris, Lille, Brest",
+  },
+  {
+    acronym: "MBA EGS",
+    fullName: "MBA European Business School",
+    city: "Paris",
+  },
 ];
 
 export const faqItems = [

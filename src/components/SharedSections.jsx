@@ -28,9 +28,11 @@ export function PageIntro({
   dark = false,
   actions = null,
   bgImage = null,
+  id = null,
 }) {
   return (
     <section
+      id={id || undefined}
       className={`section page-intro ${dark ? "page-intro-dark" : ""}`}
       style={
         bgImage
