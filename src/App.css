@@ -2412,6 +2412,18 @@ textarea {
   color: white;
 }
 
+@media (min-width: 821px) {
+  #histoire-hero .page-intro-card {
+    max-width: 980px;
+  }
+
+  #histoire-hero .page-intro-card h1 {
+    letter-spacing: -0.012em;
+    line-height: 1.14;
+    word-spacing: 0.04em;
+  }
+}
+
 .page-intro-actions {
   margin-top: 28px;
 }

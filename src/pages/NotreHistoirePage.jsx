@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { ArrowRight, MapPin } from "lucide-react";
@@ -59,6 +60,7 @@ export function NotreHistoirePage() {
         accent={pageIntros.histoire.accent}
         text={pageIntros.histoire.text}
         bgImage={parisImage}
+        id="histoire-hero"
         dark
       />
 

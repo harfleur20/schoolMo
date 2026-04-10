@@ -54,7 +54,12 @@ export function PageIntro({
           </span>
           <h1>
             {title}
-            {accent && <span>{accent}</span>}
+            {accent && (
+              <>
+                {" "}
+                <span>{accent}</span>
+              </>
+            )}
           </h1>
           <p>{text}</p>
           {actions && (
