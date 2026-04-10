@@ -262,7 +262,7 @@ export function ContactSection() {
             ))}
           </div>
 
-          <div className="contact-badges">
+          {/* <div className="contact-badges">
             <a href={whatsappBaseLink} target="_blank" rel="noreferrer">
               <Phone size={16} />
               +33 7 55 17 44 64
@@ -271,7 +271,7 @@ export function ContactSection() {
               <Mail size={16} />
               contact@schoolmo.fr
             </a>
-          </div>
+          </div> */}
         </motion.div>
 
         <motion.div className="form-panel" {...revealProps}>
@@ -352,8 +352,7 @@ export function ContactSection() {
             </button>
 
             <p className="form-note">
-              Zero stockage de donnees. Ton message arrive directement sur
-              WhatsApp pour qu on puisse discuter de ton projet en temps reel.
+              (*) Soyez le plus honnête possible dans vos déclarations.
             </p>
 
             {formSent && (

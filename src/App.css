@@ -449,14 +449,13 @@ textarea {
 
 .split-copy h2,
 .profiles-copy h2,
-.partnership-copy h2
- {
+.partnership-copy h2 {
   color: var(--navy-deep);
   font-size: clamp(2rem, 4vw, 3.7rem);
   width: 80%;
 }
 
-.cta-copy-panel h2{
+.cta-copy-panel h2 {
   color: var(--navy-deep);
   font-size: clamp(2rem, 3vw, 2.7rem);
   width: 80%;
@@ -1679,6 +1678,179 @@ textarea {
   color: rgba(255, 255, 255, 0.92);
 }
 
+/* Phase Selector Styles */
+.phase-selector {
+  display: flex;
+  gap: 12px;
+  margin: 40px 0 60px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.phase-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 2px solid var(--line);
+  border-radius: 28px;
+  background: transparent;
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.phase-button:hover {
+  border-color: var(--navy);
+}
+
+.phase-button.is-active {
+  background: var(--navy-deep);
+  color: white;
+  border-color: var(--navy-deep);
+}
+
+.phase-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(243, 168, 31, 0.2);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.phase-button.is-active .phase-number {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+
+.phase-content {
+  display: grid;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.phase-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.phase-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.phase-left h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--navy-deep);
+  margin: 0;
+}
+
+.phase-description {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.phase-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.phase-details li {
+  padding-left: 28px;
+  position: relative;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.phase-details li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: bold;
+}
+
+.phase-highlight {
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(243, 168, 31, 0.08);
+  border: 1px solid rgba(243, 168, 31, 0.2);
+}
+
+.phase-highlight strong {
+  display: block;
+  color: var(--navy-deep);
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.phase-highlight p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.phase-alt-content {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 40px;
+  border-radius: 24px;
+  border-left: 4px solid var(--gold);
+}
+
+.phase-alt-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--navy-deep);
+  margin: 0 0 16px;
+}
+
+.phase-alt-text {
+  color: var(--muted);
+  line-height: 1.75;
+  margin: 0 0 24px;
+}
+
+.phase-detailed-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.phase-detailed-list li {
+  padding-left: 24px;
+  position: relative;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.phase-detailed-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: bold;
+}
+
 .page-intro {
   padding: 170px 0 80px;
 }
@@ -2376,6 +2548,7 @@ textarea {
   .method-layout,
   .partnerships-layout,
   .reassurance-layout,
+  .phase-panel,
   .faq-layout,
   .cta-layout {
     grid-template-columns: 1fr;
@@ -2581,6 +2754,10 @@ textarea {
   .testimonial-quote {
     min-height: 300px;
   }
+
+  .phase-selector {
+    flex-wrap: wrap;
+  }
 }
 
 @media (max-width: 560px) {
@@ -2678,5 +2855,20 @@ textarea {
   .testimonial-video,
   .testimonial-quote {
     min-height: 300px;
+  }
+
+  .phase-selector {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .phase-button {
+    flex: 1 1 calc(50% - 4px);
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .phase-name {
+    display: none;
   }
 }

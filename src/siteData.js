@@ -389,9 +389,10 @@ export const pageIntros = {
     text: "Des milliers d etudiants africains reussissent chaque annee. La France existe pour ceux qui ont fait leurs devoirs et qui cherchent un environnement pour vraiment construire.",
   },
   accompagnement: {
-    tag: "Accompagnement",
-    title: "Un parcours cadre pour chaque dossier.",
-    text: "De l orientation au depart, SchoolMo organise chaque etape pour reduire les zones floues et les erreurs qui provoquent des refus ou des blocages.",
+    tag: "Notre accompagnement",
+    title: "5 phases. Un seul objectif :",
+    accent: "Ton visa etudiant pour la France.",
+    text: "SchoolMo t accompagne a travers un processus structure, clair et personnalise — de l analyse de ton profil jusqu a ton integration en France.",
   },
   partenariats: {
     tag: "Partenariats",
@@ -409,6 +410,73 @@ export const pageIntros = {
     text: "Cette page rassemble des retours d experience, des videos et des citations pour montrer ce que SchoolMo apporte concreteme nt aux projets d etudes vers la France.",
   },
 };
+
+export const accompanimentPhaseDetails = [
+  {
+    id: 1,
+    title: "Phase Accueil",
+    shortTitle: "Analyse du profil",
+    fullDescription:
+      "Tout commence par une analyse detaillee de ton profil. Apres de nombreux cas traites par SchoolMo avant, tu peux repartir confiant — ou te savoir exactement ce qu il faut changer.",
+    details: [
+      "Analyse de ta situation academique, tes experiences professionnelles",
+      "Identification des forces et des risques de ton profil",
+      "Definition des objectifs realistes et strategiques",
+      "Conseil sur l ecole, le diplome et le projet post-etudes",
+    ],
+    highlight: "Le bon depart c est la bonne analyse",
+    highlightText:
+      "Si tu es perdu ou si tu ne sais pas par ou commencer, c est normal. SchoolMo existe pour ca: transformer une envie en projet defendable.",
+  },
+  {
+    id: 2,
+    title: "Phase Ecole",
+    shortTitle: "Conseil et orientation personnalisee",
+    fullDescription:
+      "Sur la base de votre profil SchoolMo, nous construisons sur les mailles possibles : formations, etablissements, candidatures.",
+    details: [
+      "Pourquoi cette formation",
+      "Pourquoi cette ecole",
+      "Pourquoi la France",
+      "Quels sont tes objectifs",
+    ],
+    highlight: "",
+    highlightText: "",
+  },
+  {
+    id: 3,
+    title: "Phase Campus France",
+    shortTitle: "Preparation pour la procedure",
+    details: [
+      "Creation du compte Campus France",
+      "Alimentation du dossier avec les pieces justificatives",
+      "Simulations d entretien et coaching",
+      "Prise de rendez-vous a l entretien",
+    ],
+  },
+  {
+    id: 4,
+    title: "Phase Consulaire",
+    shortTitle: "Constitution du dossier visa",
+    details: [
+      "Regroupement de tous les documents necessaires",
+      "Preparation aux questions de l entretien au consulat",
+      "Verification de la coheence du projet et du dossier",
+      "Coordination avec le consulat et les partenaires",
+    ],
+  },
+  {
+    id: 5,
+    title: "Apres",
+    shortTitle: "Apres le retour intermediaire",
+    details: [
+      "Guide pratique pour l arrivee en France",
+      "Inscription administrative et demarches essentielles",
+      "Integration dans la communaute SchoolMo",
+      "Suivi et support continu",
+    ],
+  },
+];
 
 export const footerColumns = [
   {
