@@ -1,15 +1,12 @@
 import {
   AlertCircle,
-  ArrowRight,
   BadgeCheck,
   BriefcaseBusiness,
   CircleGauge,
   FileCheck2,
   Globe2,
   GraduationCap,
-  Handshake,
   MapPinned,
-  PhoneCall,
   ShieldCheck,
   Sparkles,
   Users,
@@ -410,8 +407,10 @@ export const pageIntros = {
   },
   partenariats: {
     tag: "Partenariats",
-    title: "Une relation sérieuse avec les écoles partenaires.",
-    text: "SchoolMo met en relation les établissements et les étudiants avec une logique de qualité : profils mieux cadrés, attentes clarifiées et communication plus nette.",
+    title: "SchoolMo, un réseau qui grandit",
+    accent: "— pour toi.",
+    text: "SchoolMo collabore avec des établissements africains pour détecter, orienter et accompagner les meilleurs profils étudiants vers la France.",
+    dark: true,
   },
   histoire: {
     tag: "Notre histoire",
@@ -624,20 +623,47 @@ export const storyHighlights = [
 
 export const partnerBenefits = [
   {
-    icon: Handshake,
-    title: "Des profils mieux qualifiés",
-    text: "Un premier filtre plus sérieux avant de projeter les étudiants vers les programmes partenaires.",
+    icon: GraduationCap,
+    title: "Pilier 1 — Les domaines & leurs débouchés",
+    text: "On présente à tes étudiants les filières disponibles en France, leurs réalités, leurs niveaux d'exigence et les métiers auxquels elles mènent concrètement — pour qu'ils choisissent en connaissance de cause.",
   },
   {
-    icon: PhoneCall,
-    title: "Des ateliers et conférences terrain",
-    text: "SchoolMo sait activer des prises de parole en Afrique pour présenter les établissements et leurs opportunités.",
+    icon: BriefcaseBusiness,
+    title: "Pilier 2 — Les réalités du monde pro",
+    text: "On leur parle franchement du marché du travail en France et en Afrique : ce que les employeurs attendent, les compétences qui manquent, et comment le diplôme français peut changer la donne dans leur carrière.",
   },
   {
-    icon: ArrowRight,
-    title: "Une relation plus lisible",
-    text: "Communication, accompagnement et suivi sont pensés pour rendre le parcours plus clair pour tout le monde.",
+    icon: Sparkles,
+    title: "Pilier 3 — La reconversion, c'est possible",
+    text: "Pour les profils atypiques ou ceux qui changent de voie, on sensibilise sur les opportunités de reconversion sur les études en France — et on montre que ce n'est pas trop tard pour construire un projet solide.",
   },
+];
+
+export const partnershipStats = [
+  {
+    value: "+20",
+    countValue: 20,
+    prefix: "+",
+    label: "Conférences organisées dans des établissements africains",
+  },
+  {
+    value: "5",
+    countValue: 5,
+    label: "Écoles françaises partenaires prêtes à accueillir les étudiants",
+  },
+  {
+    value: "+2 000",
+    countValue: 2000,
+    prefix: "+",
+    label: "Vrais étudiants détectés grâce au réseau SchoolMo",
+  },
+];
+
+export const partnershipBullets = [
+  "Tes étudiants sont accompagnés de A à Z pour l'obtention de leur visa et leur inscription en formation.",
+  "Ils se dirigent vers les écoles françaises partenaires SchoolMo — des établissements qui connaissent et valorisent les candidats.",
+  "SchoolMo organise des conférences de sensibilisation dans ton établissement pour informer les étudiants.",
+  "Ton établissement est mis en avant sur le réseau SchoolMo comme partenaire de réputation internationale.",
 ];
 
 export const franceBenefits = [

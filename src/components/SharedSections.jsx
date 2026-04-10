@@ -284,7 +284,9 @@ export function ContactSection() {
                   placeholder="Ex: Francis Kenne"
                   {...register("fullname", { required: "Champ requis" })}
                 />
-                {errors.fullname && <span>{errors.fullname.message}</span>}
+                {errors.fullname && (
+                  <span className="form-error">{errors.fullname.message}</span>
+                )}
               </label>
 
               <label>
@@ -294,7 +296,9 @@ export function ContactSection() {
                   placeholder="Yaoundé, Cameroun"
                   {...register("city", { required: "Champ requis" })}
                 />
-                {errors.city && <span>{errors.city.message}</span>}
+                {errors.city && (
+                  <span className="form-error">{errors.city.message}</span>
+                )}
               </label>
 
               <label>
@@ -314,7 +318,9 @@ export function ContactSection() {
                   <option value="Reconversion">Reconversion</option>
                   <option value="Parent">Parent</option>
                 </select>
-                {errors.profile && <span>{errors.profile.message}</span>}
+                {errors.profile && (
+                  <span className="form-error">{errors.profile.message}</span>
+                )}
               </label>
 
               <label className="full">
@@ -332,7 +338,9 @@ export function ContactSection() {
                     Vérifier la faisabilité du dossier
                   </option>
                 </select>
-                {errors.project && <span>{errors.project.message}</span>}
+                {errors.project && (
+                  <span className="form-error">{errors.project.message}</span>
+                )}
               </label>
 
               <label className="full">
@@ -342,7 +350,9 @@ export function ContactSection() {
                   placeholder="Âge, niveau d'études, objectif, difficulté actuelle..."
                   {...register("message", { required: "Champ requis" })}
                 />
-                {errors.message && <span>{errors.message.message}</span>}
+                {errors.message && (
+                  <span className="form-error">{errors.message.message}</span>
+                )}
               </label>
             </div>
 
