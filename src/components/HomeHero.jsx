@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import siteIcon from "../../Assets/icon.png";
@@ -12,6 +13,9 @@ import {
 
 export function HomeHero() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [useShortHeroText, setUseShortHeroText] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(max-width: 560px)").matches : false
+  );
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -26,6 +30,18 @@ export function HomeHero() {
       const image = new Image();
       image.src = slide.image;
     });
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const mediaQuery = window.matchMedia("(max-width: 560px)");
+    const handleMediaChange = (event) => {
+      setUseShortHeroText(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
   }, []);
 
   return (
@@ -71,7 +87,11 @@ export function HomeHero() {
                       <h1>
                         {slide.title} <span>{slide.accent}</span>
                       </h1>
-                      <p className="hero-lead">{slide.description}</p>
+                      <p className="hero-lead">
+                        {useShortHeroText && slide.mobileDescription
+                          ? slide.mobileDescription
+                          : slide.description}
+                      </p>
                     </div>
 
                     <div className="hero-actions">

@@ -89,6 +89,8 @@ export const heroSlides = [
     accent: "Tu es au bon endroit !",
     description:
       "Tu as eu ton bac il y a longtemps ? Des années vides dans ton parcours ? Tu as plus de 35 ans ? C'est justement pour toi que SchoolMo existe.",
+    mobileDescription:
+      "Bac ancien, années vides ou +35 ans ? On cadre ton projet.",
     image: heroSliderDossier,
     imageAlt: "Eligibilité voyage en France",
     imagePosition: "76% center",
@@ -100,6 +102,8 @@ export const heroSlides = [
     accent: "entre de bonnes mains.",
     description:
       "SchoolMo accompagne les étudiants africains, camerounais en particulier, pour transformer une envie d'étudier en France en dossier crédible, clair et défendable.",
+    mobileDescription:
+      "Ton projet devient un dossier clair et défendable.",
     image: heroSlideVisa,
     imageAlt: "Transmission de colis et documents",
     imagePosition: "76% center",
@@ -111,6 +115,8 @@ export const heroSlides = [
     accent: "piloté de bout en bout.",
     description:
       "Orientation, candidatures, Campus France, consulaire, préparation au départ : chaque phase est cadrée pour éviter les improvisations qui coûtent du temps et des refus.",
+    mobileDescription:
+      "On cadre l'orientation, l'école, Campus France et le visa.",
     image: heroSlideSupport,
     imageAlt: "Femme travaillant sur ordinateur avec documents",
     imagePosition: "72% center",
@@ -122,6 +128,8 @@ export const heroSlides = [
     accent: "si le projet est bien construit.",
     description:
       "Le positionnement SchoolMo est simple : dire ce qui est possible, ce qui ne l'est pas, puis monter une trajectoire cohérente pour les profils étudiants, reconversions et parents.",
+    mobileDescription:
+      "On vérifie le possible, puis on construit une trajectoire cohérente.",
     image: heroSlideStudents,
     imageAlt: "Deux étudiants souriants avec ordinateur",
     imagePosition: "68% center",

@@ -4,10 +4,12 @@ import {
   CheckCircle2,
   ChevronDown,
   Mail,
+  MapPin,
   MessageCircle,
   Phone,
   Send,
 } from "lucide-react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
@@ -145,7 +147,10 @@ export function PartnersGridSection({ title, text }) {
           {partnershipLogos.map((partner) => (
             <article key={partner.label} className="logo-card partner-logo-card">
               <img src={partner.src} alt={partner.alt} />
-              <small>{partner.city}</small>
+              <small>
+                <MapPin size={15} aria-hidden="true" />
+                {partner.city}
+              </small>
             </article>
           ))}
         </motion.div>

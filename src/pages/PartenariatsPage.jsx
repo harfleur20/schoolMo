@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { CheckCircle2, ChevronRight, Send } from "lucide-react";
+import { CheckCircle2, ChevronRight, MapPin, Send } from "lucide-react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { isPossiblePhoneNumber } from "react-phone-number-input";
@@ -53,7 +54,10 @@ export function PartenariatsPage() {
             {partnershipLogos.map((partner) => (
               <article key={partner.label} className="logo-card partner-logo-card">
                 <img src={partner.src} alt={partner.alt} />
-                <small>{partner.city}</small>
+                <small>
+                  <MapPin size={15} aria-hidden="true" />
+                  {partner.city}
+                </small>
               </article>
             ))}
           </motion.div>

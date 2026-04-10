@@ -20,12 +20,29 @@ import studyImage from "/Assets/women-traveling-together-paris.webp";
 
 export function EtudierFrancePage() {
   const [expandedFaq, setExpandedFaq] = useState(null);
-  const CARDS_PER_SLIDE = 2;
   const [errorIndex, setErrorIndex] = useState(0);
-  const totalSlides = Math.ceil(visaErrorCategories.length / CARDS_PER_SLIDE);
+  const [isMobileCarousel, setIsMobileCarousel] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(max-width: 560px)").matches : false
+  );
+  const cardsPerSlide = isMobileCarousel ? 1 : 2;
+  const totalSlides = Math.ceil(visaErrorCategories.length / cardsPerSlide);
+  const visibleErrorIndex = errorIndex % totalSlides;
   const prevError = () => setErrorIndex((i) => (i - 1 + totalSlides) % totalSlides);
   const nextError = () => setErrorIndex((i) => (i + 1) % totalSlides);
   const isPaused = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const mediaQuery = window.matchMedia("(max-width: 560px)");
+    const handleMediaChange = (event) => {
+      setIsMobileCarousel(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => {
       if (!isPaused.current) setErrorIndex((i) => (i + 1) % totalSlides);
@@ -51,7 +68,7 @@ export function EtudierFrancePage() {
         }
       />
 
-      <section className="section section-light">
+      <section className="section section-light france-benefits-section">
         <div className="section-shell">
           <motion.div className="section-heading" {...revealProps}>
             <span className="section-tag section-tag-light">
@@ -112,15 +129,15 @@ export function EtudierFrancePage() {
             </button>
 
             <motion.div
-              key={errorIndex}
+              key={`${cardsPerSlide}-${visibleErrorIndex}`}
               className="error-carousel-track"
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.25 }}
             >
-              {visaErrorCategories.slice(errorIndex * CARDS_PER_SLIDE, errorIndex * CARDS_PER_SLIDE + CARDS_PER_SLIDE).map((category, localIdx) => {
+              {visaErrorCategories.slice(visibleErrorIndex * cardsPerSlide, visibleErrorIndex * cardsPerSlide + cardsPerSlide).map((category, localIdx) => {
                 const Icon = category.icon;
-                const cardNumber = String(errorIndex * CARDS_PER_SLIDE + localIdx + 1).padStart(2, "0");
+                const cardNumber = String(visibleErrorIndex * cardsPerSlide + localIdx + 1).padStart(2, "0");
                 return (
                   <article key={category.title} className="error-card">
                     <span className="error-card-number">{cardNumber}</span>
@@ -151,7 +168,7 @@ export function EtudierFrancePage() {
             {Array.from({ length: totalSlides }).map((_, i) => (
               <button
                 key={i}
-                className={`error-dot${i === errorIndex ? " is-active" : ""}`}
+                className={`error-dot${i === visibleErrorIndex ? " is-active" : ""}`}
                 onClick={() => setErrorIndex(i)}
                 aria-label={`Slide ${i + 1}`}
               />

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { ChevronDown, Minus } from "lucide-react";
@@ -18,19 +19,23 @@ export function AccompagnementPage() {
   const [expandedItems, setExpandedItems] = useState({});
   const location = useLocation();
   const phaseSectionRef = useRef(null);
+  const phaseContentRef = useRef(null);
 
   useEffect(() => {
     const hash = location.hash;
     if (hash && hash.startsWith("#phase-")) {
       const phaseNum = parseInt(hash.replace("#phase-", ""), 10);
       if (phaseNum >= 1 && phaseNum <= 5) {
-        setActivePhase(phaseNum - 1);
-        setExpandedItems({});
-        setTimeout(() => {
+        const timer = window.setTimeout(() => {
+          setActivePhase(phaseNum - 1);
+          setExpandedItems({});
           phaseSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 80);
+        return () => window.clearTimeout(timer);
       }
     }
+
+    return undefined;
   }, [location.hash]);
 
   const currentPhase = accompanimentPhaseDetails[activePhase];
@@ -43,6 +48,17 @@ export function AccompagnementPage() {
       ...prev,
       [key]: !prev[key],
     }));
+  };
+
+  const handlePhaseSelect = (phaseIndex) => {
+    setActivePhase(phaseIndex);
+    setExpandedItems({});
+
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 820px)").matches) {
+      window.setTimeout(() => {
+        phaseContentRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 80);
+    }
   };
 
   return (
@@ -75,10 +91,9 @@ export function AccompagnementPage() {
               <motion.button
                 key={phase.id}
                 className={`phase-button ${activePhase === phase.id - 1 ? "is-active" : ""}`}
-                onClick={() => {
-                  setActivePhase(phase.id - 1);
-                  setExpandedItems({});
-                }}
+                aria-label={phase.title}
+                aria-pressed={activePhase === phase.id - 1}
+                onClick={() => handlePhaseSelect(phase.id - 1)}
               >
                 <span className="phase-number">{phase.id}</span>
                 <span className="phase-name">{phase.title}</span>
@@ -88,6 +103,7 @@ export function AccompagnementPage() {
 
           {/* Phase Content Row */}
           <motion.div
+            ref={phaseContentRef}
             key={currentPhase.id}
             className="phase-row"
             {...revealProps}

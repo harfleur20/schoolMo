@@ -12,7 +12,9 @@
       "Bash(npm install:*)",
       "Bash(node scripts/compress-images.mjs)",
       "Bash(xargs ls:*)",
-      "Bash(awk '{print $5, $9}')"
+      "Bash(awk '{print $5, $9}')",
+      "Bash(grep -n \"menu-toggle\\\\|is-open\\\\|hamburger\\\\|setOpen\\\\|isOpen\" \"c:/Users/harfl/OneDrive/Desktop/SchoolMo/src/components/\"*.jsx)",
+      "Bash(grep -n \"\\\\.page-intro-card p\\\\|\\\\.page-intro-card h1\\\\|hero-badge {\\\\|hero-copy-block {\\\\|hero-actions {\\\\|hero-lead,\\\\|hero-lead {\" \"c:/Users/harfl/OneDrive/Desktop/SchoolMo/src/App.css\")"
     ]
   }
 }

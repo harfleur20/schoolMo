@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import logo from "../../Assets/logo_site_web.png";
 import { WhatsAppIcon } from "./BrandIcons";
 import {
@@ -11,6 +11,10 @@ import {
   socialLinks,
   whatsappBaseLink,
 } from "../siteData";
+
+const MotionDiv = motion.div;
+const MotionHeader = motion.header;
+const MotionNav = motion.nav;
 
 function isExternalHref(href) {
   return (
@@ -51,14 +55,39 @@ export function SiteLayout() {
     window.scrollTo(0, 0);
   }, [location]);
 
+  useEffect(() => {
+    if (!menuOpen) {
+      return undefined;
+    }
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    const handleMenuEscape = (event) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    window.addEventListener("keydown", handleMenuEscape);
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      window.removeEventListener("keydown", handleMenuEscape);
+    };
+  }, [menuOpen]);
+
   return (
     <div className="site-shell">
-      <motion.div
+      <MotionDiv
         layout
         className={`site-header-shell ${isScrolled ? "is-scrolled" : ""}`}
         transition={{ type: "spring", stiffness: 260, damping: 28, mass: 0.9 }}
       >
-        <motion.header
+        <MotionHeader
           layout
           className={`site-header ${isScrolled ? "is-scrolled" : ""}`}
           transition={{
@@ -77,7 +106,8 @@ export function SiteLayout() {
             <img src={logo} alt="Logo SchoolMo" />
           </NavLink>
 
-          <nav className={`site-nav ${menuOpen ? "is-open" : ""}`}>
+          {/* Nav desktop */}
+          <nav className="site-nav">
             {navItems.map((item) => (
               <NavLink
                 key={item.path}
@@ -98,16 +128,77 @@ export function SiteLayout() {
             </NavLink>
           </nav>
 
+          {/* Burger */}
           <button
-            className="menu-toggle"
+            className={`menu-toggle ${menuOpen ? "is-open" : ""}`}
             type="button"
-            aria-label="Menu"
+            aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((current) => !current)}
           >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            <span className="menu-toggle-box" aria-hidden="true">
+              <span className="menu-toggle-line" />
+              <span className="menu-toggle-line" />
+              <span className="menu-toggle-line" />
+            </span>
+            <span className="menu-toggle-label">
+              {menuOpen ? "Fermer" : "Menu"}
+            </span>
           </button>
-        </motion.header>
-      </motion.div>
+
+          <AnimatePresence>
+            {menuOpen && (
+              <MotionNav
+                id="mobile-navigation"
+                className="mobile-nav-dropdown"
+                aria-label="Navigation mobile"
+                initial={{ opacity: 0, y: -14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <div className="mobile-nav-panel">
+                  <div className="mobile-nav-list">
+                    {navItems.map((item, index) => (
+                      <motion.div
+                        key={item.path}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -4 }}
+                        transition={{
+                          delay: index * 0.025,
+                          duration: 0.18,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                      >
+                        <NavLink
+                          to={item.path}
+                          onClick={handleCloseMenu}
+                          className={({ isActive }) =>
+                            `mobile-nav-link ${isActive ? "is-active" : ""}`
+                          }
+                        >
+                          <span>{item.label}</span>
+                        </NavLink>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  <NavLink
+                    className="mobile-nav-cta"
+                    to="/accompagnement#diagnostic"
+                    onClick={handleCloseMenu}
+                  >
+                    Diagnostic gratuit
+                    <ArrowRight size={16} />
+                  </NavLink>
+                </div>
+              </MotionNav>
+            )}
+          </AnimatePresence>
+        </MotionHeader>
+      </MotionDiv>
 
       <main className="site-main">
         <Outlet />
