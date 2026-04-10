@@ -34,7 +34,7 @@ export function EtudierFrancePage() {
         dark
         actions={
           <NavLink className="btn btn-primary" to="/accompagnement#diagnostic">
-            Demarrer mon diagnostic
+            Démarrer mon diagnostic
             <ArrowRight size={18} />
           </NavLink>
         }
@@ -47,11 +47,11 @@ export function EtudierFrancePage() {
               Pourquoi la France ?
             </span>
             <h2>
-              La France, c est bien plus qu un diplome —{" "}
-              <span>c est un environnement pour te construire</span>.
+              La France, c'est bien plus qu'un diplôme —{" "}
+              <span>c'est un environnement pour te construire</span>.
             </h2>
             <p>
-              Voila ce qui rend le projet France serieux et defendable si tu
+              Voilà ce qui rend le projet France sérieux et défendable si tu
               veux vraiment avancer.
             </p>
           </motion.div>
@@ -82,13 +82,13 @@ export function EtudierFrancePage() {
         <div className="section-shell">
           <motion.div className="section-heading" {...revealProps}>
             <span className="section-tag section-tag-light">
-              Attention aux pieges
+              Attention aux pièges
             </span>
             <h2>
-              Les erreurs qui peuvent conduire a un{" "}
-              <span>defavorable Campus France</span> et un refus de visa.
+              Les erreurs qui peuvent conduire à un{" "}
+              <span>défavorable Campus France</span> et un refus de visa.
             </h2>
-            <p>Ces blocs recurrent. Voici comment les eviter.</p>
+            <p>Ces situations sont récurrentes. Voici comment les éviter.</p>
           </motion.div>
 
           <div className="error-grid">
@@ -152,7 +152,7 @@ export function EtudierFrancePage() {
           <motion.div className="section-heading" {...revealProps}>
             <span className="section-tag section-tag-light">FAQ</span>
             <h2>
-              Tes questions — <span>nos reponses honnetes</span>.
+              Tes questions — <span>nos réponses honnêtes</span>.
             </h2>
           </motion.div>
 
@@ -197,7 +197,7 @@ export function EtudierFrancePage() {
             Ton projet France commence par <span>un diagnostic gratuit</span>.
           </>
         }
-        text="Pas de promesses vides, juste une lecture d analyse : est-ce que ca peut marcher ? Qu est-ce qui manque ?"
+        text="Pas de promesses vides, juste une lecture d'analyse : est-ce que ça peut marcher ? Qu'est-ce qui manque ?"
       />
     </>
   );

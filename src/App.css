@@ -903,6 +903,22 @@ textarea {
   background: #ffffff;
 }
 
+.phase-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.phase-section-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
 .profiles-layout {
   display: grid;
   gap: 28px;
@@ -1866,9 +1882,23 @@ textarea {
   margin: 18px 0 12px;
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 5vw, 4.5rem);
-  line-height: 0.94;
+  line-height: 1.08;
   letter-spacing: -0.04em;
   color: var(--navy-deep);
+}
+
+.page-intro-card h1 span {
+  background-color: rgba(243, 168, 31, 0.35);
+  color: var(--navy-deep);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0.04em 0.1em;
+}
+
+.page-intro-dark .page-intro-card h1 span {
+  background: none;
+  color: var(--gold);
+  padding: 0;
 }
 
 .page-intro-card p {
@@ -2396,6 +2426,240 @@ textarea {
 
 .stats-strip-item span {
   color: rgba(255, 255, 255, 0.82);
+}
+
+/* Phase Row Layout */
+.phase-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 64px;
+  align-items: start;
+}
+
+.phase-row:nth-child(even) {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Phase Card Left - Dark Navy */
+.phase-card-left {
+  background: var(--navy-deep);
+  border-radius: 20px;
+  padding: 40px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.phase-card-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.phase-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.phase-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.phase-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+  color: white;
+}
+
+.phase-title .phase-accent {
+  color: var(--gold);
+}
+
+.phase-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin: 0 0 24px 0;
+}
+
+.phase-highlight-box {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(243, 168, 31, 0.3);
+}
+
+.phase-highlight-label {
+  color: var(--gold);
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.phase-highlight-box p {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Phase Card Right - Accordion */
+.phase-card-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.phase-detail-item {
+  background: #f5f3f0;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.24s ease;
+}
+
+.phase-detail-item.is-expanded {
+  background: white;
+  border-color: var(--gold);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.phase-detail-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.24s ease;
+  text-align: left;
+}
+
+.phase-detail-item.is-expanded .phase-detail-trigger {
+  background: none;
+}
+
+.phase-detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  background: #e8e6e3;
+  border-radius: 8px;
+  color: var(--navy-deep);
+  transition: all 0.24s ease;
+}
+
+.phase-detail-item.is-expanded .phase-detail-icon {
+  background: var(--gold);
+  color: white;
+}
+
+.phase-detail-title {
+  flex: 1;
+  font-weight: 600;
+  color: var(--navy-deep);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.phase-detail-chevron {
+  color: var(--navy-deep);
+  flex-shrink: 0;
+  transition: transform 0.24s ease;
+}
+
+.phase-detail-item.is-expanded .phase-detail-chevron {
+  transform: rotate(180deg);
+}
+
+.phase-detail-content {
+  padding: 0 20px 20px 68px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.phase-detail-content p {
+  margin: 0;
+}
+
+/* Phase Continuous Support */
+.phase-continuous-support {
+  margin-top: 60px;
+  /* padding: 32px; */
+  padding-left: 28px;
+  background: transparent;
+  border: none;
+  border-left: 4px solid var(--blue);
+  border-radius: 0;
+  grid-column: 1 / -1;
+}
+
+.phase-continuous-support h3 {
+  margin: 0 0 24px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy-deep);
+}
+
+.phase-support-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.phase-support-list li {
+  display: flex;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 1.12rem;
+  line-height: 1;
+}
+
+.phase-support-list li::before {
+  content: "–";
+  color: var(--gold);
+  font-weight: 800;
+  flex-shrink: 0;
+  min-width: 12px;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1100px) {
+  .phase-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .phase-card-left {
+    padding: 32px;
+  }
+
+  .phase-title {
+    font-size: 1.8rem;
+  }
 }
 
 .institution-banner {

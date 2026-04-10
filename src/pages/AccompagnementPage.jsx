@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
+import { ChevronDown, Minus } from "lucide-react";
 import {
   ClosingBanner,
   ContactSection,
@@ -13,7 +15,35 @@ import {
 
 export function AccompagnementPage() {
   const [activePhase, setActivePhase] = useState(0);
+  const [expandedItems, setExpandedItems] = useState({});
+  const location = useLocation();
+  const phaseSectionRef = useRef(null);
+
+  useEffect(() => {
+    const hash = location.hash;
+    if (hash && hash.startsWith("#phase-")) {
+      const phaseNum = parseInt(hash.replace("#phase-", ""), 10);
+      if (phaseNum >= 1 && phaseNum <= 5) {
+        setActivePhase(phaseNum - 1);
+        setExpandedItems({});
+        setTimeout(() => {
+          phaseSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 80);
+      }
+    }
+  }, [location.hash]);
+
   const currentPhase = accompanimentPhaseDetails[activePhase];
+  const mainTitle = currentPhase.title.split(" ").slice(1).join(" ");
+  const phaseLabel = `PHASE ${currentPhase.id} SUR 5`;
+
+  const toggleItem = (phaseId, itemIndex) => {
+    const key = `${phaseId}-${itemIndex}`;
+    setExpandedItems((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
 
   return (
     <>
@@ -24,92 +54,135 @@ export function AccompagnementPage() {
         text={pageIntros.accompagnement.text}
       />
 
-      <section className="section section-light">
-        <div className="section-shell">
-          <motion.div className="section-heading" {...revealProps}>
-            <span className="section-tag section-tag-light">
-              Le processus schoolmo
-            </span>
-            <h2>
-              Chaque phase, <span>chaque detail</span> compte
-            </h2>
-            <p>
-              Cliquez sur chaque phase pour decouvrir ce que SchoolMo fait
-              concretement pour toi.
-            </p>
-          </motion.div>
-
-          <div className="phase-selector">
-            {accompanimentPhaseDetails.map((phase, index) => (
+      <section ref={phaseSectionRef} className="section section-light phase-section">
+        <AnimatePresence mode="sync">
+          <motion.img
+            key={currentPhase.id}
+            src={currentPhase.image}
+            alt=""
+            className="phase-section-bg-img"
+            aria-hidden="true"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.04 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          />
+        </AnimatePresence>
+        <div className="section-shell" style={{ position: "relative", zIndex: 1 }}>
+          {/* Phase Selector Tabs */}
+          <motion.div className="phase-selector" {...revealProps}>
+            {accompanimentPhaseDetails.map((phase) => (
               <motion.button
                 key={phase.id}
-                className={`phase-button ${activePhase === index ? "is-active" : ""}`}
-                onClick={() => setActivePhase(index)}
-                {...revealProps}
+                className={`phase-button ${activePhase === phase.id - 1 ? "is-active" : ""}`}
+                onClick={() => {
+                  setActivePhase(phase.id - 1);
+                  setExpandedItems({});
+                }}
               >
                 <span className="phase-number">{phase.id}</span>
                 <span className="phase-name">{phase.title}</span>
               </motion.button>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="phase-content">
-            <motion.div
-              key={currentPhase.id}
-              className="phase-panel"
-              {...revealProps}
-            >
-              <div className="phase-left">
-                <h3>{currentPhase.title}</h3>
+          {/* Phase Content Row */}
+          <motion.div
+            key={currentPhase.id}
+            className="phase-row"
+            {...revealProps}
+          >
+            {/* Left side - Dark card */}
+            <div className="phase-card-left">
+              <AnimatePresence mode="sync">
+                <motion.img
+                  key={currentPhase.id}
+                  src={currentPhase.image}
+                  alt=""
+                  className="phase-card-bg-img"
+                  aria-hidden="true"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.09 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.7, ease: "easeInOut" }}
+                />
+              </AnimatePresence>
+              <div className="phase-card-content">
+                <div className="phase-label">{phaseLabel}</div>
+                <h3 className="phase-title">
+                  Phase <span className="phase-accent">{mainTitle}</span>
+                </h3>
                 <p className="phase-description">
-                  {currentPhase.fullDescription || currentPhase.shortTitle}
+                  {currentPhase.fullDescription}
                 </p>
-                <ul className="phase-details">
-                  {currentPhase.details.map((detail, index) => (
-                    <li key={index}>{detail}</li>
-                  ))}
-                </ul>
                 {currentPhase.highlightText && (
-                  <div className="phase-highlight">
-                    <strong>{currentPhase.highlight}</strong>
+                  <div className="phase-highlight-box">
+                    <strong className="phase-highlight-label">
+                      — {currentPhase.highlight}
+                    </strong>
                     <p>{currentPhase.highlightText}</p>
                   </div>
                 )}
               </div>
-            </motion.div>
+            </div>
 
-            {activePhase === 0 && (
-              <motion.div className="phase-alt-content" {...revealProps}>
-                <h3>Phase Accueil</h3>
-                <p className="phase-alt-text">
-                  Tout commence par une analyse detaillee de ton profil. Apres
-                  de nombreux cas traites par SchoolMo avant, tu peux repartir
-                  confiant — ou te savoir exactement ce qu il faut changer.
-                </p>
-                <ul className="phase-detailed-list">
-                  <li>
-                    Analyse de ta situation academique, tes experiences
-                    professionnelles
-                  </li>
-                  <li>
-                    Identification des forces et des risques de ton profil
-                  </li>
-                  <li>Definition des objectifs realistes et strategiques</li>
-                  <li>
-                    Conseil sur l ecole, le diplome et le projet post-etudes
-                  </li>
-                </ul>
-                <div className="phase-alt-highlight">
-                  <strong>Le bon depart c est la bonne analyse</strong>
-                  <p>
-                    Si tu es perdu ou si tu ne sais pas par ou commencer, c est
-                    normal. SchoolMo existe pour ca: transformer une envie en
-                    projet defendable.
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </div>
+            {/* Right side - Accordion details */}
+            <div className="phase-card-right">
+              {currentPhase.details.map((detail, itemIndex) => {
+                const key = `${currentPhase.id}-${itemIndex}`;
+                const isExpanded = expandedItems[key];
+                const detailContent =
+                  currentPhase.detailsContent?.[itemIndex] || detail;
+
+                return (
+                  <motion.div
+                    key={itemIndex}
+                    className={`phase-detail-item ${isExpanded ? "is-expanded" : ""}`}
+                  >
+                    <button
+                      className="phase-detail-trigger"
+                      onClick={() => toggleItem(currentPhase.id, itemIndex)}
+                    >
+                      <div className="phase-detail-icon">
+                        <Minus size={18} />
+                      </div>
+                      <span className="phase-detail-title">{detail}</span>
+                      <ChevronDown size={18} className="phase-detail-chevron" />
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isExpanded && (
+                        <motion.div
+                          className="phase-detail-content"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{
+                            height: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+                            opacity: { duration: 0.25, ease: "easeOut" },
+                          }}
+                          style={{ overflow: "hidden" }}
+                        >
+                          <p>{detailContent}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          {/* Continuous Support Section */}
+          {currentPhase.continuousSupport && (
+            <motion.div className="phase-continuous-support" {...revealProps}>
+              <h3>{currentPhase.continuousSupport.title}</h3>
+              <ul className="phase-support-list">
+                {currentPhase.continuousSupport.items.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
         </div>
       </section>
 
@@ -117,10 +190,10 @@ export function AccompagnementPage() {
       <ClosingBanner
         title={
           <>
-            Pret(e) a demarrer ton <span>accompagnement</span> ?
+            Prêt(e) à démarrer ton <span>accompagnement</span> ?
           </>
         }
-        text="La premiere etape est un diagnostic gratuit. On evalue la situation, on l analyse le processus, et on convainc ensemble."
+        text="La première étape est un diagnostic gratuit. On évalue la situation, on analyse le processus, et on convainc ensemble."
       />
     </>
   );

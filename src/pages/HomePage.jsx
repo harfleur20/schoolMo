@@ -24,11 +24,11 @@ export function HomePage() {
           <motion.div className="section-heading" {...revealProps}>
             <span className="section-tag section-tag-light">Étudier en France</span>
             <h2>
-              Tu te reconnais dans <span>l une de ces situations</span> ?
+              Tu te reconnais dans <span>l'une de ces situations</span> ?
             </h2>
             <p>
-              L accueil doit poser le decor rapidement: SchoolMo parle aux etudiants, aux
-              reconversions et aux familles qui veulent un projet France plus cadre.
+              SchoolMo parle aux étudiants, aux reconversions et aux familles qui veulent
+              un projet France plus cadré.
             </p>
           </motion.div>
 
@@ -55,8 +55,8 @@ export function HomePage() {
             <div className="situation-note-icon" aria-hidden="true">
               <Info size={18} />
             </div>
-            SchoolMo reconnait dans chaque cas qu un bon projet ne repose ni sur l age ni sur des
-            promesses faciles, mais sur un dossier coherent et defendable.
+            SchoolMo reconnaît dans chaque cas qu'un bon projet ne repose ni sur l'âge ni sur des
+            promesses faciles, mais sur un dossier cohérent et défendable.
           </motion.div>
         </div>
       </section>
@@ -66,8 +66,8 @@ export function HomePage() {
           <motion.div className="method-panel method-panel-left" {...revealProps}>
             <h2>Le sens de SchoolMo</h2>
             <p className="method-panel-intro">
-              Une lecture simple de ce que porte la marque: mobilite, connexion et bonne methode
-              pour faire avancer un projet France avec plus de clarte.
+              Une lecture simple de ce que porte la marque : mobilité, connexion et bonne méthode
+              pour faire avancer un projet France avec plus de clarté.
             </p>
 
             <div className="method-points method-points-meaning">
@@ -81,13 +81,13 @@ export function HomePage() {
           </motion.div>
 
           <motion.div className="method-panel method-panel-right" {...revealProps}>
-            <span className="section-tag section-tag-light">Notre difference</span>
+            <span className="section-tag section-tag-light">Notre différence</span>
             <h2>
-              SchoolMo, ce n est pas une agence. <span>C est un projet de mobilite.</span>
+              SchoolMo, ce n'est pas une agence. <span>C'est un projet de mobilité.</span>
             </h2>
             <p>
-              On ne vend pas du reve. On construit des parcours serieux - et on accompagne chaque
-              personne a travers 5 phases structurees jusqu a l obtention de son visa etudiant.
+              On ne vend pas du rêve. On construit des parcours sérieux — et on accompagne chaque
+              personne à travers 5 phases structurées jusqu'à l'obtention de son visa étudiant.
             </p>
 
             <div className="method-accordion">
@@ -119,7 +119,7 @@ export function HomePage() {
             </div>
 
             <NavLink className="btn btn-primary method-cta" to="/accompagnement#diagnostic">
-              Tu souhaites etre accompagne(e) ?
+              Tu souhaites être accompagné(e) ?
               <ArrowRight size={18} />
             </NavLink>
           </motion.div>
@@ -131,11 +131,11 @@ export function HomePage() {
           <motion.div className="section-heading reassurance-card" {...revealProps}>
             <span className="section-tag">Projet France</span>
             <h2>
-              Il n est jamais trop tard <span>pour etudier en France</span>.
+              Il n'est jamais trop tard <span>pour étudier en France</span>.
             </h2>
             <p>
-              Age, trou dans le parcours ou reconversion ne ferment pas automatiquement la porte.
-              Ce qui compte, c est la coherence du projet et la facon dont il est construit.
+              Âge, trou dans le parcours ou reconversion ne ferment pas automatiquement la porte.
+              Ce qui compte, c'est la cohérence du projet et la façon dont il est construit.
             </p>
             <NavLink className="btn btn-primary" to="/accompagnement">
               Voir notre accompagnement
@@ -150,11 +150,11 @@ export function HomePage() {
           <motion.div className="section-heading" {...revealProps}>
             <span className="section-tag section-tag-light">Profils</span>
             <h2>
-              SchoolMo t accompagne <span>quel que soit ton profil</span>.
+              SchoolMo t'accompagne <span>quel que soit ton profil</span>.
             </h2>
             <p>
-              L accueil doit montrer tres vite que le service n est pas reserve a un seul type de
-              candidat. Le discours s adresse a plusieurs realites.
+              Le service n'est pas réservé à un seul type de candidat. Le discours s'adresse à
+              plusieurs réalités.
             </p>
           </motion.div>
 
@@ -180,10 +180,10 @@ export function HomePage() {
         marquee
         title={
           <>
-            Ils pensaient que c etait <span>impossible</span>. Ils sont en France.
+            Ils pensaient que c'était <span>impossible</span>. Ils sont en France.
           </>
         }
-        text="Le social proof doit respirer le vecu: retours d experience, reformulations honnetes et videos courtes."
+        text="Des retours d'expérience, des reformulations honnêtes et des vidéos courtes — le vécu avant tout."
       />
 
       <section className="section institution-banner">
@@ -191,14 +191,14 @@ export function HomePage() {
           <motion.div className="institution-card" {...revealProps}>
             <span className="section-tag section-tag-light">Partenariats</span>
             <h2>
-              Tu es un <span>etablissement scolaire ou universitaire</span> ?
+              Tu es un <span>établissement scolaire ou universitaire</span> ?
             </h2>
             <p>
-              SchoolMo peut aussi presenter votre offre, qualifier les profils et accompagner les
-              etudiants vers des parcours plus lisibles.
+              SchoolMo peut aussi présenter votre offre, qualifier les profils et accompagner les
+              étudiants vers des parcours plus lisibles.
             </p>
             <NavLink className="btn btn-primary" to="/partenariats">
-              Decouvrir la page partenariats
+              Découvrir la page partenariats
               <ArrowRight size={18} />
             </NavLink>
           </motion.div>
@@ -208,19 +208,19 @@ export function HomePage() {
       <PartnersGridSection
         title={
           <>
-            Des ecoles reconnues <span>qui nous font confiance</span>.
+            Des écoles reconnues <span>qui nous font confiance</span>.
           </>
         }
-        text="Nous gardons notre design, mais nous utilisons ce bloc comme preuve de credibilite et d ancrage."
+        text="Des établissements partenaires engagés pour des parcours étudiants plus solides."
       />
 
       <ClosingBanner
         title={
           <>
-            Tout projet merite d aboutir. <span>SchoolMo est la pour ca.</span>
+            Tout projet mérite d'aboutir. <span>SchoolMo est là pour ça.</span>
           </>
         }
-        text="Le service cadre, accompagne, puis reste present dans la phase de depart et d installation."
+        text="Le service cadre, accompagne, puis reste présent dans la phase de départ et d'installation."
       />
     </>
   )

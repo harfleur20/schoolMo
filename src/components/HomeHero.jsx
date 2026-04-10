@@ -81,7 +81,7 @@ export function HomeHero() {
                             className="btn btn-primary"
                             to="/accompagnement#diagnostic"
                           >
-                            Verifie ton eligibilité
+                            Vérifie ton éligibilité
                             <ArrowRight size={18} />
                           </NavLink>
                           <NavLink
@@ -97,7 +97,7 @@ export function HomeHero() {
                             className="btn btn-primary"
                             to="/accompagnement#diagnostic"
                           >
-                            Demarrer mon diagnostic
+                            Démarrer mon diagnostic
                             <ArrowRight size={18} />
                           </NavLink>
                           <a
@@ -107,7 +107,7 @@ export function HomeHero() {
                             rel="noreferrer"
                           >
                             <MessageCircle size={18} />
-                            Ecrire sur WhatsApp
+                            Écrire sur WhatsApp
                           </a>
                         </>
                       )}

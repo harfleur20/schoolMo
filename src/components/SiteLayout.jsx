@@ -71,7 +71,7 @@ export function SiteLayout() {
           <NavLink
             className="brand"
             to="/"
-            aria-label="Retour a l accueil"
+            aria-label="Retour à l'accueil"
             onClick={handleCloseMenu}
           >
             <img src={logo} alt="Logo SchoolMo" />

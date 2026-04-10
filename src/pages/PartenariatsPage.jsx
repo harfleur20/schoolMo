@@ -12,11 +12,11 @@ export function PartenariatsPage() {
           <motion.div className="section-heading" {...revealProps}>
             <span className="section-tag section-tag-light">Pourquoi SchoolMo</span>
             <h2>
-              Un partenaire qui sait parler aux <span>etudiants africains</span>.
+              Un partenaire qui sait parler aux <span>étudiants africains</span>.
             </h2>
             <p>
-              La page partenariats doit montrer la valeur pour les etablissements: meilleurs
-              profils, discours plus lisible, activations plus serieuses.
+              La page partenariats doit montrer la valeur pour les établissements : meilleurs
+              profils, discours plus lisible, activations plus sérieuses.
             </p>
           </motion.div>
 
@@ -41,10 +41,10 @@ export function PartenariatsPage() {
       <PartnersGridSection
         title={
           <>
-            Des ecoles reconnues <span>deja engagees</span>.
+            Des écoles reconnues <span>déjà engagées</span>.
           </>
         }
-        text="Ce bloc reprend les etablissements visibles aujourd hui et les presente dans un cadre plus premium."
+        text="Ce bloc reprend les établissements visibles aujourd'hui et les présente dans un cadre plus premium."
       />
 
       <ContactSection />
@@ -52,10 +52,10 @@ export function PartenariatsPage() {
       <ClosingBanner
         title={
           <>
-            Vous etes une ecole ? <span>Construisons un dispositif utile.</span>
+            Vous êtes une école ? <span>Construisons un dispositif utile.</span>
           </>
         }
-        text="SchoolMo peut activer des ateliers, qualifier les profils et fluidifier le parcours des etudiants."
+        text="SchoolMo peut activer des ateliers, qualifier les profils et fluidifier le parcours des étudiants."
       />
     </>
   )

@@ -71,7 +71,7 @@ export function TestimonialsSection({ marquee = false, title, text }) {
     <section className="section section-soft">
       <div className="section-shell">
         <motion.div className="section-heading" {...revealProps}>
-          <span className="section-tag section-tag-light">Temoignages</span>
+          <span className="section-tag section-tag-light">Témoignages</span>
           <h2>{title}</h2>
           <p>{text}</p>
         </motion.div>
@@ -134,7 +134,7 @@ export function PartnersGridSection({ title, text }) {
     <section className="section section-light">
       <div className="section-shell">
         <motion.div className="section-heading" {...revealProps}>
-          <span className="section-tag section-tag-light">Nos ecoles</span>
+          <span className="section-tag section-tag-light">Nos écoles</span>
           <h2>{title}</h2>
           <p>{text}</p>
         </motion.div>
@@ -161,11 +161,11 @@ export function FaqSection() {
         <motion.div className="section-heading heading-left" {...revealProps}>
           <span className="section-tag section-tag-light">FAQ</span>
           <h2>
-            Les questions qui bloquent avant meme de <span>se lancer</span>.
+            Les questions qui bloquent avant même de <span>se lancer</span>.
           </h2>
           <p>
-            Une FAQ en accord avec la cible SchoolMo: age, refus, reconversion,
-            realisme du projet et premiere prise de contact.
+            Une FAQ en accord avec la cible SchoolMo : âge, refus, reconversion,
+            réalisme du projet et première prise de contact.
           </p>
         </motion.div>
 
@@ -219,11 +219,11 @@ export function ContactSection() {
   const onSubmit = (values) => {
     const text = [
       "Bonjour SchoolMo,",
-      `Je m appelle ${values.fullname}.`,
+      `Je m'appelle ${values.fullname}.`,
       `Ville / Pays : ${values.city}.`,
       `Profil : ${values.profile}.`,
       `Projet : ${values.project}.`,
-      values.email ? `Email : ${values.email}.` : "Email : non renseigne.",
+      values.email ? `Email : ${values.email}.` : "Email : non renseigné.",
       `Contexte : ${values.message}`,
     ].join("\n");
 
@@ -244,12 +244,12 @@ export function ContactSection() {
             Diagnostic gratuit
           </span>
           <h2>
-            Le bon premier geste: <span>qualifier le projet</span> avant de s
-            epuiser.
+            Le bon premier geste : <span>qualifier le projet</span> avant de
+            s'épuiser.
           </h2>
           <p>
-            Partage ton profil et ta situation. On analyse ta coherence, on
-            identifie les risques et on te dit exactement ce qu il faut faire
+            Partage ton profil et ta situation. On analyse ta cohérence, on
+            identifie les risques et on te dit exactement ce qu'il faut faire
             pour vraiment avancer.
           </p>
 
@@ -281,7 +281,7 @@ export function ContactSection() {
                 Nom complet
                 <input
                   type="text"
-                  placeholder="Ex: Brenda N."
+                  placeholder="Ex: Francis Kenne"
                   {...register("fullname", { required: "Champ requis" })}
                 />
                 {errors.fullname && <span>{errors.fullname.message}</span>}
@@ -291,7 +291,7 @@ export function ContactSection() {
                 Ville / Pays
                 <input
                   type="text"
-                  placeholder="Yaounde, Cameroun"
+                  placeholder="Yaoundé, Cameroun"
                   {...register("city", { required: "Champ requis" })}
                 />
                 {errors.city && <span>{errors.city.message}</span>}
@@ -310,7 +310,7 @@ export function ContactSection() {
                 Profil
                 <select {...register("profile", { required: "Champ requis" })}>
                   <option value="">Choisir</option>
-                  <option value="Etudiant">Etudiant</option>
+                  <option value="Étudiant">Étudiant</option>
                   <option value="Reconversion">Reconversion</option>
                   <option value="Parent">Parent</option>
                 </select>
@@ -321,15 +321,15 @@ export function ContactSection() {
                 Projet principal
                 <select {...register("project", { required: "Champ requis" })}>
                   <option value="">Choisir</option>
-                  <option value="Etudier en France">Etudier en France</option>
-                  <option value="Reprendre des etudes">
-                    Reprendre des etudes
+                  <option value="Étudier en France">Étudier en France</option>
+                  <option value="Reprendre des études">
+                    Reprendre des études
                   </option>
                   <option value="Accompagner mon enfant">
                     Accompagner mon enfant
                   </option>
-                  <option value="Verifier la faisabilite du dossier">
-                    Verifier la faisabilite du dossier
+                  <option value="Vérifier la faisabilité du dossier">
+                    Vérifier la faisabilité du dossier
                   </option>
                 </select>
                 {errors.project && <span>{errors.project.message}</span>}
@@ -339,7 +339,7 @@ export function ContactSection() {
                 Contexte
                 <textarea
                   rows="5"
-                  placeholder="Age, niveau d etudes, objectif, difficulte actuelle..."
+                  placeholder="Âge, niveau d'études, objectif, difficulté actuelle..."
                   {...register("message", { required: "Champ requis" })}
                 />
                 {errors.message && <span>{errors.message.message}</span>}
@@ -358,7 +358,7 @@ export function ContactSection() {
             {formSent && (
               <div className="form-success">
                 <CheckCircle2 size={18} />
-                WhatsApp s est ouvert avec ton message pre-rempli.
+                WhatsApp s'est ouvert avec ton message pré-rempli.
               </div>
             )}
           </form>
@@ -394,7 +394,7 @@ export function ClosingBanner({ title, text }) {
               rel="noreferrer"
             >
               <MessageCircle size={18} />
-              Ecrire sur WhatsApp
+              Écrire sur WhatsApp
             </a>
           </div>
         </motion.div>

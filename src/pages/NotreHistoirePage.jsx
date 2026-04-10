@@ -12,11 +12,11 @@ export function NotreHistoirePage() {
           <motion.div className="section-heading heading-left" {...revealProps}>
             <span className="section-tag section-tag-light">Notre histoire</span>
             <h2>
-              Une histoire de <span>lucidite</span>, de structure et de terrain.
+              Une histoire de <span>lucidité</span>, de structure et de terrain.
             </h2>
             <p>
-              Cette page assume un ton plus editorial: d ou vient SchoolMo, ce que la marque
-              refuse, et pourquoi elle parle aussi fort de coherence.
+              Cette page assume un ton plus éditorial : d'où vient SchoolMo, ce que la marque
+              refuse, et pourquoi elle parle aussi fort de cohérence.
             </p>
           </motion.div>
 
@@ -26,10 +26,10 @@ export function NotreHistoirePage() {
             </div>
             <div className="founder-copy">
               <span className="section-tag section-tag-light">Vision SchoolMo</span>
-              <h3>Une marque plus humaine, plus directe, plus credible.</h3>
+              <h3>Une marque plus humaine, plus directe, plus crédible.</h3>
               <p>
-                SchoolMo a ete pense pour remettre de l exigence et du bon sens dans les projets
-                d etudes vers la France. Le design doit servir cette clarte, pas la masquer.
+                SchoolMo a été pensé pour remettre de l'exigence et du bon sens dans les projets
+                d'études vers la France. Le design doit servir cette clarté, pas la masquer.
               </p>
               <div className="founder-note">
                 <strong>{founder.name}</strong>
@@ -52,10 +52,10 @@ export function NotreHistoirePage() {
       <ClosingBanner
         title={
           <>
-            L histoire SchoolMo repose sur une idee simple: <span>mieux faire</span>.
+            L'histoire SchoolMo repose sur une idée simple : <span>mieux faire</span>.
           </>
         }
-        text="Mieux lire les profils, mieux construire les dossiers, mieux preparer les etudiants au depart."
+        text="Mieux lire les profils, mieux construire les dossiers, mieux préparer les étudiants au départ."
       />
     </>
   )

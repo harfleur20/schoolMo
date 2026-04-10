@@ -10,19 +10,19 @@ export function TemoignagesPage() {
         marquee
         title={
           <>
-            Ils pensaient que c etait <span>bloque</span>. Le projet a avance.
+            Ils pensaient que c'était <span>bloqué</span>. Le projet a avancé.
           </>
         }
-        text="Ici on privilegie les retours reels, les videos, les contextes et les phrases qui montrent la valeur du cadrage SchoolMo."
+        text="Ici on privilégie les retours réels, les vidéos, les contextes et les phrases qui montrent la valeur du cadrage SchoolMo."
       />
 
       <ClosingBanner
         title={
           <>
-            Derriere chaque temoignage, il y a surtout une <span>methode</span>.
+            Derrière chaque témoignage, il y a surtout une <span>méthode</span>.
           </>
         }
-        text="Les temoignages servent a rassurer, mais aussi a montrer qu un projet solide se construit et s argumente."
+        text="Les témoignages servent à rassurer, mais aussi à montrer qu'un projet solide se construit et s'argumente."
       />
     </>
   )
