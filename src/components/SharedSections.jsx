@@ -141,11 +141,11 @@ export function PartnersGridSection({ title, text }) {
           <p>{text}</p>
         </motion.div>
 
-        <motion.div className="logo-grid" {...revealProps}>
+        <motion.div className="logo-grid partner-logo-grid" {...revealProps}>
           {partnershipLogos.map((partner) => (
-            <article key={partner.label} className="logo-card">
+            <article key={partner.label} className="logo-card partner-logo-card">
               <img src={partner.src} alt={partner.alt} />
-              <span>{partner.label}</span>
+              <small>{partner.city}</small>
             </article>
           ))}
         </motion.div>

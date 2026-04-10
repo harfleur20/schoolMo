@@ -1,7 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node -e ':*)"
+      "Bash(node -e ':*)",
+      "Bash(node -e \"require\\('sharp'\\)\")",
+      "Bash(ffmpeg -version)",
+      "Bash(cwebp -version)",
+      "Bash(magick --version)",
+      "Bash(convert --version)",
+      "Bash(node -e \"const s=require\\('fs'\\);console.log\\(Object.keys\\(require\\('./node_modules/sharp/package.json'||{}\\)\\)\\)\")",
+      "Bash(npm list:*)",
+      "Bash(npm install:*)",
+      "Bash(node scripts/compress-images.mjs)",
+      "Bash(xargs ls:*)",
+      "Bash(awk '{print $5, $9}')"
     ]
   }
 }

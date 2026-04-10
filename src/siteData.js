@@ -17,7 +17,7 @@ import {
   TikTokIcon,
   YouTubeIcon,
 } from "./components/BrandIcons";
-import founderPhoto from "../Assets/Anicet_nemani.jpg";
+import founderPhoto from "../Assets/Anicet_nemani.webp";
 import eceLogo from "../Assets/ECE_LOGO_2021_web.png";
 import ebsLogo from "../Assets/ebs-paris-european-business-school-logo-vector.png";
 import inseecLogo from "../Assets/ecole-inseec-formations.webp";
@@ -25,12 +25,12 @@ import edcLogo from "../Assets/EDC_PARIS_BUSINESS_SCHOOL_LOGO_MONOCHROME_BLEU.pn
 import isenLogo from "../Assets/ISEN_Méditerranée_Logo.png";
 import temoignageVideo1 from "../Assets/temoignage_1.mp4";
 import temoignageVideo2 from "../Assets/temoignage_2.mp4";
-import heroSlideVisa from "../Assets/schhollMo_image.png";
+import heroSlideVisa from "../Assets/schhollMo_image.webp";
 import heroSlideSupport from "./assets/hero-slide-support.jpeg";
-import heroSlideStudents from "/Assets/women-traveling-together-paris.jpg";
-import heroSliderDossier from "../Assets/bienvenueenfrance.png";
+import heroSlideStudents from "/Assets/women-traveling-together-paris.webp";
+import heroSliderDossier from "../Assets/bienvenueenfrance.webp";
 import phaseImgSchool from "../Assets/istockphoto-1334063560-612x612.jpg";
-import phaseImgCampus from "../Assets/woman-with-mobile-phone-lady-with-documents.jpg";
+import phaseImgCampus from "../Assets/woman-with-mobile-phone-lady-with-documents.webp";
 
 export const whatsappNumber = "33755174464";
 export const whatsappBaseLink = `https://wa.me/${whatsappNumber}`;
@@ -444,8 +444,9 @@ export const pageIntros = {
   },
   histoire: {
     tag: "Notre histoire",
-    title: "Une marque construite autour de la franchise.",
-    text: "SchoolMo s'est construit autour d'un constat simple : beaucoup de projets étudiants échouent moins par manque d'envie que par manque de cadre, de lucidité et de méthode.",
+    title: "SchoolMo n'est pas né dans un bureau.",
+    accent: "Il est né d'une vie.",
+    text: "Derrière SchoolMo, il y a un parcours inattendu. Une conviction profonde que les trajectoires les plus belles ne sont pas toujours les plus droites.",
   },
   temoignages: {
     tag: "Témoignages",
@@ -852,3 +853,93 @@ export const founder = {
   name: "Anicet Nemani",
   role: "SchoolMo",
 };
+
+export const founderStory = [
+  {
+    title: "Le bac. Puis rien.",
+    text: "Après son bac obtenu, Anicet ne suit pas le chemin attendu. Comme beaucoup de jeunes Africains livrés à eux-mêmes, il traverse une période difficile — la délinquance, l'errance, les mauvais choix.",
+  },
+  {
+    title: "L'Afrique du Sud. Les mains dans les machines.",
+    text: "Il se retrouve en Afrique du Sud pour survivre. Il répare des téléphones, des ordinateurs. C'est là qu'il comprend — quand on sait comment les choses fonctionnent, on peut tout reconstruire.",
+  },
+  {
+    title: "La France. Et BIMSTR.",
+    text: "Anicet arrive en France et fonde BIMSTR en 2014 — le premier média musical camerounais sur le web. Grâce à son approche REVOLT (Devenir the Target), BIMSTR atteint plus de 450 000 abonnés et devient une référence nationale.",
+  },
+  {
+    title: "Du terrain aux amphithéâtres.",
+    text: "Ses travaux sur le marketing tribal sont publiés sur des plateformes académiques internationales — dont Harvard Business Review. Ce même accomplissement lui permet d'intervenir dans des écoles de commerce françaises.",
+  },
+  {
+    title: "Aujourd'hui. Consultant SAP. Fondateur. Convaincu.",
+    text: "Anicet travaille comme consultant SAP et freelance en informatique. Il a créé SchoolMo pour que d'autres étudiants ne ratent pas leur départ — avec la méthode qu'il n'a jamais eue.",
+  },
+];
+
+export const founderAchievements = [
+  "Fondateur de BIMSTR — 1er média musical camerounais",
+  "+450 000 abonnés Facebook en 4 ans",
+  "Publié dans Harvard Business Review",
+  "Conférencier en écoles de commerce françaises",
+  "Consultant SAP & expert digital",
+];
+
+export const histoireValeurs = [
+  {
+    title: "L'honnêteté avant tout",
+    text: "SchoolMo ne promet jamais ce qu'il n'est pas sûr de tenir. On te dit la vérité sur ton dossier, tes chances réelles et les délais.",
+  },
+  {
+    title: "La méthode plutôt que la chance",
+    text: "Un visa obtenu, c'est rarement une question de chance. C'est une question de préparation et de cohérence. SchoolMo apporte la méthode.",
+  },
+  {
+    title: "L'ancrage africain, l'ouverture mondiale",
+    text: "SchoolMo comprend la réalité africaine parce qu'on en est là. On part avec l'Afrique, pour l'Afrique.",
+  },
+  {
+    title: "L'humain au centre",
+    text: "Chaque personne accompagnée par SchoolMo est une histoire unique. Pas un dossier. Pas un numéro. On prend le temps.",
+  },
+];
+
+export const histoireTeam = [
+  {
+    initials: "AN",
+    name: "Anicet Nemani",
+    role: "Fondateur & Stratège",
+    bio: "Fondateur de BIMSTR, consultant SAP publié dans Harvard Business Review. Conférencier en écoles de commerce françaises.",
+    location: "France",
+    color: "#0B1C3D",
+  },
+  {
+    initials: "SM",
+    name: "Sandrine Mballa",
+    role: "Orientation & Accompagnement",
+    bio: "Ancienne conseillère académique pendant 6 ans. Spécialisée en aide à la décision académique.",
+    location: "Douala, Cameroun",
+    color: "#1A3A5C",
+  },
+  {
+    initials: "RE",
+    name: "Rodrigue Esaema",
+    role: "Processus Visa & Démarches",
+    bio: "A lui-même vécu un refus de visa avant de tout recommencer avec méthode. Il connaît les pièges — et sait comment les éviter.",
+    location: "Kribi, France",
+    color: "#0D2B4E",
+  },
+  {
+    initials: "IT",
+    name: "Inés Tchoumba",
+    role: "Communication & Réseaux",
+    bio: "Arrivée en France à 21 ans pour ses études, elle aide à dire comment ça se passe vraiment.",
+    location: "Paris, France",
+    color: "#162D4A",
+  },
+];
+
+export const histoireStats = [
+  { value: "+2 000", countValue: 2000, prefix: "+", label: "Visas étudiants obtenus pour la France" },
+  { value: "+20", countValue: 20, prefix: "+", label: "Conférences et ateliers réalisés" },
+];

@@ -15,10 +15,8 @@ import {
   pageIntros,
   revealProps,
   visaErrorCategories,
-  // eslint-disable-next-line no-unused-vars
-  whatsappBaseLink,
 } from "../siteData";
-import studyImage from "/Assets/women-traveling-together-paris.jpg";
+import studyImage from "/Assets/women-traveling-together-paris.webp";
 
 export function EtudierFrancePage() {
   const [expandedFaq, setExpandedFaq] = useState(null);
