@@ -1,16 +1,36 @@
-import { motion } from 'framer-motion'
-import { NavLink } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
-import { ClosingBanner, ContactSection, FaqSection, PageIntro } from '../components/SharedSections'
-import { homeSituations, pageIntros, revealProps, valuePillars } from '../siteData'
+import { useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import {
+  ClosingBanner,
+  ContactSection,
+  PageIntro,
+} from "../components/SharedSections";
+import {
+  etudiesFranceCTA,
+  franceBenefits,
+  faqEtudes,
+  pageIntros,
+  revealProps,
+  visaErrorCategories,
+  // eslint-disable-next-line no-unused-vars
+  whatsappBaseLink,
+} from "../siteData";
+import studyImage from "/Assets/women-traveling-together-paris.jpg";
 
 export function EtudierFrancePage() {
+  const [expandedFaq, setExpandedFaq] = useState(null);
+
   return (
     <>
       <PageIntro
         tag={pageIntros.etudes.tag}
         title={pageIntros.etudes.title}
+        accent={pageIntros.etudes.accent}
         text={pageIntros.etudes.text}
+        bgImage={studyImage}
         dark
         actions={
           <NavLink className="btn btn-primary" to="/accompagnement#diagnostic">
@@ -23,22 +43,37 @@ export function EtudierFrancePage() {
       <section className="section section-light">
         <div className="section-shell">
           <motion.div className="section-heading" {...revealProps}>
-            <span className="section-tag section-tag-light">Situations frequentes</span>
+            <span className="section-tag section-tag-light">
+              Pourquoi la France ?
+            </span>
             <h2>
-              Les cas les plus frequents avant de <span>lancer les demarches</span>.
+              La France, c est bien plus qu un diplome —{" "}
+              <span>c est un environnement pour te construire</span>.
             </h2>
             <p>
-              Cette page pose les vraies questions de depart avant Campus France, les candidatures
-              et le visa.
+              Voila ce qui rend le projet France serieux et defendable si tu
+              veux vraiment avancer.
             </p>
           </motion.div>
 
-          <div className="situation-grid">
-            {homeSituations.map((situation) => (
-              <motion.article key={situation} className="situation-card" {...revealProps}>
-                <p>{situation}</p>
-              </motion.article>
-            ))}
+          <div className="pillar-grid">
+            {franceBenefits.map((benefit) => {
+              const Icon = benefit.icon;
+
+              return (
+                <motion.article
+                  key={benefit.title}
+                  className="pillar-card"
+                  {...revealProps}
+                >
+                  <div className="icon-chip">
+                    <Icon size={40} />
+                  </div>
+                  <h3>{benefit.title}</h3>
+                  <p>{benefit.text}</p>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -46,43 +81,124 @@ export function EtudierFrancePage() {
       <section className="section section-soft">
         <div className="section-shell">
           <motion.div className="section-heading" {...revealProps}>
-            <span className="section-tag section-tag-light">Ce qui compte</span>
+            <span className="section-tag section-tag-light">
+              Attention aux pieges
+            </span>
             <h2>
-              Un projet France se joue sur la <span>coherence</span>, pas sur la chance.
+              Les erreurs qui peuvent conduire a un{" "}
+              <span>defavorable Campus France</span> et un refus de visa.
             </h2>
-            <p>
-              Les pieces, le discours et le positionnement doivent raconter la meme trajectoire.
-            </p>
+            <p>Ces blocs recurrent. Voici comment les eviter.</p>
           </motion.div>
 
-          <div className="pillar-grid">
-            {valuePillars.map((pillar) => {
-              const Icon = pillar.icon
+          <div className="error-grid">
+            {visaErrorCategories.map((category) => {
+              const Icon = category.icon;
 
               return (
-                <motion.article key={pillar.title} className="pillar-card" {...revealProps}>
-                  <div className="icon-chip">
-                    <Icon size={22} />
+                <motion.article
+                  key={category.title}
+                  className="error-card"
+                  {...revealProps}
+                >
+                  <div className="error-header">
+                    <div className="error-icon">
+                      <Icon size={24} />
+                    </div>
+                    <h3>{category.title}</h3>
                   </div>
-                  <h3>{pillar.title}</h3>
-                  <p>{pillar.text}</p>
+                  <p className="error-description">{category.description}</p>
+                  <ul className="error-list">
+                    {category.errors.map((error, index) => (
+                      <li key={index}>
+                        <span>{error}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="error-highlight">
+                    <strong>💡 {category.highlight}</strong>
+                  </div>
                 </motion.article>
-              )
+              );
             })}
           </div>
         </div>
       </section>
 
-      <FaqSection />
+      <section className="section section-dark reassurance-section">
+        <div className="section-shell">
+          <motion.div className="reassurance-layout" {...revealProps}>
+            <div className="reassurance-left">
+              <h3>{etudiesFranceCTA.leftTitle}</h3>
+              <p>{etudiesFranceCTA.leftText}</p>
+            </div>
+            <div className="reassurance-right">
+              <h3>{etudiesFranceCTA.rightTitle}</h3>
+              <p>{etudiesFranceCTA.rightText}</p>
+              <NavLink
+                className="btn btn-primary"
+                to="/accompagnement#diagnostic"
+              >
+                {etudiesFranceCTA.buttonLabel}
+                <ArrowRight size={18} />
+              </NavLink>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="section section-light">
+        <div className="section-shell">
+          <motion.div className="section-heading" {...revealProps}>
+            <span className="section-tag section-tag-light">FAQ</span>
+            <h2>
+              Tes questions — <span>nos reponses honnetes</span>.
+            </h2>
+          </motion.div>
+
+          <div className="faq-list">
+            {faqEtudes.map((item, index) => (
+              <motion.div
+                key={index}
+                className={`faq-item ${expandedFaq === index ? "is-open" : ""}`}
+                {...revealProps}
+              >
+                <button
+                  className="faq-trigger"
+                  onClick={() =>
+                    setExpandedFaq(expandedFaq === index ? null : index)
+                  }
+                  aria-expanded={expandedFaq === index}
+                >
+                  <span>{item.question}</span>
+                  <ChevronDown size={18} />
+                </button>
+                {expandedFaq === index && (
+                  <motion.div
+                    className="faq-answer"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <p>{item.answer}</p>
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <ContactSection />
       <ClosingBanner
         title={
           <>
-            Tu veux savoir si ton projet peut <span>vraiment avancer</span> ?
+            Ton projet France commence par <span>un diagnostic gratuit</span>.
           </>
         }
-        text="Le meilleur point d entree reste un diagnostic franc avant d empiler les demarches."
+        text="Pas de promesses vides, juste une lecture d analyse : est-ce que ca peut marcher ? Qu est-ce qui manque ?"
       />
     </>
-  )
+  );
 }

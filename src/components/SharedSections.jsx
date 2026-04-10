@@ -20,15 +20,38 @@ import {
   whatsappBaseLink,
 } from "../siteData";
 
-export function PageIntro({ tag, title, text, dark = false, actions = null }) {
+export function PageIntro({
+  tag,
+  title,
+  accent,
+  text,
+  dark = false,
+  actions = null,
+  bgImage = null,
+}) {
   return (
-    <section className={`section page-intro ${dark ? "page-intro-dark" : ""}`}>
+    <section
+      className={`section page-intro ${dark ? "page-intro-dark" : ""}`}
+      style={
+        bgImage
+          ? {
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${bgImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundAttachment: "fixed",
+            }
+          : {}
+      }
+    >
       <div className="section-shell">
         <motion.div className="page-intro-card" {...revealProps}>
           <span className={`section-tag ${dark ? "" : "section-tag-light"}`}>
             {tag}
           </span>
-          <h1>{title}</h1>
+          <h1>
+            {title}
+            {accent && <span>{accent}</span>}
+          </h1>
           <p>{text}</p>
           {actions && (
             <div className="hero-actions page-intro-actions">{actions}</div>
@@ -225,9 +248,9 @@ export function ContactSection() {
             epuiser.
           </h2>
           <p>
-            Le formulaire ci-dessous alimente un message WhatsApp pre-rempli. Il
-            capte les leads sans backend complexe tout en gardant un contact
-            humain immediat.
+            Partage ton profil et ta situation. On analyse ta coherence, on
+            identifie les risques et on te dit exactement ce qu il faut faire
+            pour vraiment avancer.
           </p>
 
           <div className="cta-steps">
@@ -329,9 +352,8 @@ export function ContactSection() {
             </button>
 
             <p className="form-note">
-              Le formulaire n envoie rien en base de donnees. Il ouvre
-              simplement WhatsApp avec un message pre-structure pour accelerer
-              le premier diagnostic.
+              Zero stockage de donnees. Ton message arrive directement sur
+              WhatsApp pour qu on puisse discuter de ton projet en temps reel.
             </p>
 
             {formSent && (

@@ -1,4 +1,5 @@
 import {
+  AlertCircle,
   ArrowRight,
   BadgeCheck,
   BriefcaseBusiness,
@@ -382,9 +383,10 @@ export const contactSteps = [
 
 export const pageIntros = {
   etudes: {
-    tag: "Étudier en France",
-    title: "Clarifier ton projet France avant les demarches.",
-    text: "Cette page explique a qui SchoolMo s adresse, les situations les plus frequentes et la logique a adopter pour transformer une envie d etudier en France en projet defendable.",
+    tag: "Etude en France",
+    title: "La France est accessible.",
+    accent: "SchoolMo te montre le chemin.",
+    text: "Des milliers d etudiants africains reussissent chaque annee. La France existe pour ceux qui ont fait leurs devoirs et qui cherchent un environnement pour vraiment construire.",
   },
   accompagnement: {
     tag: "Accompagnement",
@@ -472,6 +474,150 @@ export const partnerBenefits = [
     text: "Communication, accompagnement et suivi sont penses pour rendre le parcours plus clair pour tout le monde.",
   },
 ];
+
+export const franceBenefits = [
+  {
+    icon: ShieldCheck,
+    title: "Un systeme social solide et protecteur",
+    text: "La France te donne acces a une couverture sociale largement superieure a ce que tu vas trouver ailleurs: sante, logement, transport subventionnes.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Des diplômes reconnus scientifiquement",
+    text: "Un diplôme francais reste un signe fort sur le marche du travail africain et international. Ce n est pas rien.",
+  },
+  {
+    icon: BriefcaseBusiness,
+    title: "Travailler pendant les etudes",
+    text: "Legalement et facilement. Entre 15 et 20h par semaine tu peux financer une partie de ton sejour et acquérir une experience professionnelle reelle.",
+  },
+  {
+    icon: CircleGauge,
+    title: "L alternance : etudier et travailler",
+    text: "Beaucoup d ecoles francaises proposent l alternance. Tu etudies 3 jours, tu travailles 2 jours. C est du vrai formation professionnelle.",
+  },
+  {
+    icon: Globe2,
+    title: "Des opportunites apres les etudes",
+    text: "Un VIE (Volontariat International en Entreprise) te permet de rester et de bosser 2 ans apres tes etudes grace a des contrats facilites.",
+  },
+  {
+    icon: Users,
+    title: "Une ouverture internationale",
+    text: "Les ecoles francaises te mettent en contact avec des etudiants de plus de 100 nationalites. Tu ouvres ton reseau avant meme de chercher un job.",
+  },
+];
+
+export const visaErrorCategories = [
+  {
+    icon: AlertCircle,
+    title: "Un projet d etudes incoherent",
+    description: "Ton projet doit avoir du sens. Si ta formation en France :",
+    errors: [
+      "ne correspond pas a ton parcours academique",
+      "ne correspond pas a tes experiences professionnelles",
+      "ressemble a une reconversion non justifiee",
+    ],
+    highlight: "Ton dossier sera considere comme incoherent",
+  },
+  {
+    icon: AlertCircle,
+    title: "Une mauvaise maitrise de ton projet",
+    description:
+      "Lors de l entretien Campus France, tu dois etre capable d expliquer :",
+    errors: [
+      "pourquoi cette formation",
+      "pourquoi cette ecole",
+      "pourquoi la France",
+      "quels sont tes objectifs",
+    ],
+    highlight:
+      "Si tu hesites ou si tes reponses ne sont pas convaincantes, l avis sera defavorable",
+  },
+  {
+    icon: AlertCircle,
+    title: "Un mauvais choix de formation ou d etablissement",
+    description: "Le choix du programme est strategique. Tu dois verifier :",
+    errors: [
+      "que le titre est reconnu (RNCP actif)",
+      "que le niveau du diplome est coherent",
+      "que l ecole est habilitee ou partenaire du certificateur",
+    ],
+    highlight: "Un mauvais choix peut discredibiliser tout ton projet",
+  },
+  {
+    icon: AlertCircle,
+    title: "Des annees vides non justifiees",
+    description:
+      "Les periodes sans activite sont tres sensibles. Si tu as des annees vides :",
+    errors: ["sans formation", "sans emploi", "sans justification claire"],
+    highlight: "Cela peut etre percu comme un manque de serieux",
+  },
+  {
+    icon: AlertCircle,
+    title: "Un projet professionnel flou ou absent",
+    description:
+      "Ton projet ne doit pas s arreter aux etudes. Tu dois montrer :",
+    errors: [
+      "ce que tu veux faire apres",
+      "comment ta formation t y amene",
+      "en quoi ton projet est realiste",
+    ],
+    highlight: "Sans vision claire, ton dossier perd en credibilite",
+  },
+  {
+    icon: AlertCircle,
+    title: "Une motivation mal expliquee",
+    description:
+      "Dire je veux aller en France ne suffit pas. Tu dois prouver :",
+    errors: [
+      "que tu comprends ton choix",
+      "que tu sais pourquoi la France",
+      "que ton projet est reflechi",
+    ],
+    highlight: "Une motivation faible ou copiee est souvent eliminatoire",
+  },
+];
+
+export const faqEtudes = [
+  {
+    question: "A quel age peut-on demander un visa etudes pour la France ?",
+    answer:
+      "Il n y a pas d age legal minimum. SchoolMo a accompagne des etudiants des 17 ans. Par contre plus tu es jeune, plus ton dossier doit etre solide parce qu on va te poser des questions sur ta maturite.",
+  },
+  {
+    question: "Comment bien se preparer a un entretien Campus France ?",
+    answer:
+      "Il y a deux choses: connaitre ton dossier par coeur (ton parcours, ton ecole, ton domaine, tes financements) et pouvoir repondre aux questions avec naturel, pas en recitant. SchoolMo te fait des simulations avant.",
+  },
+  {
+    question:
+      "S abonner gratuitement a l assurance etudiant en France est-il possible ?",
+    answer:
+      "Oui. L assurance maladie des etudiants en France est presque gratuite (moins de 100 euros par an). Tu es automatiquement couvert. Par contre tu dois aussi prendre une assurance logement et responsabilite civile, et c est franchement pas couteux.",
+  },
+  {
+    question: "Pour un etudiant en France apres ?",
+    answer:
+      "Apres un bac+3 ou bac+5 tu peux rester en France via un VIE (Volontariat International en Entreprise) pendant 2 ans, ou chercher un contrat de travail classique. Les ecoles gardent des contacts avec des entreprises qui recrutent des jeunes diplomes.",
+  },
+  {
+    question:
+      "Qu est-ce qui se passe si on recoit un refus de visa en France ?",
+    answer:
+      "Un refus n est pas fatal. Il faut identifier ce qui a bloque (motivation, situation bancaire, etapes manquantes) et repostuler avec un dossier plus solide. SchoolMo aide a relire ton dossier apres un refus pour te remettre sur les rails.",
+  },
+];
+
+export const etudiesFranceCTA = {
+  leftTitle: "Ce qu il faut retenir",
+  leftText:
+    "Un refus ne vient presque jamais du hasard. Il vient d un projet mal prepare.",
+  rightTitle: "Pourquoi se faire accompagner",
+  rightText:
+    "Chez SchoolMo, on t aide a construire un projet coherent, faire les bons choix, preparer ton entretien et securiser ton dossier.",
+  buttonLabel: "Securiser mon dossier",
+};
 
 export const revealProps = {
   initial: { opacity: 0, y: 28 },
