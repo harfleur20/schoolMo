@@ -56,6 +56,7 @@ export function HomeHero() {
                 style={{
                   "--hero-image": `url(${slide.image})`,
                   "--hero-position": slide.imagePosition,
+                  "--hero-mobile-size": slide.mobileImageSize ?? "cover",
                 }}
               />
             ))}

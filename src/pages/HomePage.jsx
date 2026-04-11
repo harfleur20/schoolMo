@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ArrowRight, ChevronDown, Info } from 'lucide-react'
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
 import { HomeHero } from '../components/HomeHero'

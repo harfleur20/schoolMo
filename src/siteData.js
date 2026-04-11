@@ -116,6 +116,7 @@ export const heroSlides = [
     image: heroSlideSupport,
     imageAlt: "Femme travaillant sur ordinateur avec documents",
     imagePosition: "72% center",
+    mobileImageSize: "100% auto",
   },
   {
     id: "confidence",
