@@ -62,14 +62,8 @@ export const socialLinks = [
 ];
 
 export const footerMetaLinks = [
-  {
-    label: "Mentions légales",
-    href: `mailto:${contactEmail}?subject=Mentions%20legales%20SchoolMo`,
-  },
-  {
-    label: "Confidentialité",
-    href: `mailto:${contactEmail}?subject=Confidentialite%20et%20donnees%20personnelles`,
-  },
+  { label: "Mentions légales", path: "/mentions-legales" },
+  { label: "Confidentialité", path: "/confidentialite" },
 ];
 
 export const navItems = [

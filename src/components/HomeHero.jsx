@@ -71,8 +71,8 @@ export function HomeHero() {
                     initial={false}
                     animate={
                       index === activeSlide
-                        ? { opacity: 1, y: 0, scale: 1 }
-                        : { opacity: 0, y: 18, scale: 0.985 }
+                        ? { opacity: 1, y: 0 }
+                        : { opacity: 0, y: 18 }
                     }
                     transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                   >
@@ -110,6 +110,25 @@ export function HomeHero() {
                           >
                             Voir mon accompagnement
                           </NavLink>
+                        </>
+                      ) : index === 2 ? (
+                        <>
+                          <NavLink
+                            className="btn btn-primary"
+                            to="/partenariats"
+                          >
+                            Nos écoles partenaires
+                            <ArrowRight size={18} />
+                          </NavLink>
+                          <a
+                            className="btn btn-secondary"
+                            href={whatsappBaseLink}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <MessageCircle size={18} />
+                            Écrire sur WhatsApp
+                          </a>
                         </>
                       ) : (
                         <>

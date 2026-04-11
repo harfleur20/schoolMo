@@ -295,9 +295,9 @@ export function SiteLayout() {
             <p>© {currentYear} SchoolMo. Tous droits réservés.</p>
             <div className="footer-bottom-links">
               {footerMetaLinks.map((link) => (
-                <a key={link.label} href={link.href}>
+                <NavLink key={link.label} to={link.path}>
                   {link.label}
-                </a>
+                </NavLink>
               ))}
             </div>
           </div>
