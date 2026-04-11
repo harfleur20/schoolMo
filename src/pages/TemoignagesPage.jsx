@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight, Play, Star, X } from "lucide-react";
@@ -12,6 +12,100 @@ import {
   whatsappBaseLink,
   writtenTestimonials,
 } from "../siteData";
+
+const videoPosterCache = new Map();
+
+function VideoPreview({ src, alt }) {
+  const [poster, setPoster] = useState(() => videoPosterCache.get(src) ?? null);
+
+  useEffect(() => {
+    if (!src || videoPosterCache.has(src)) {
+      return undefined;
+    }
+
+    let isCancelled = false;
+    const video = document.createElement("video");
+    const canvas = document.createElement("canvas");
+
+    const cleanup = () => {
+      video.removeEventListener("loadeddata", handleLoadedData);
+      video.removeEventListener("seeked", captureFrame);
+      video.removeEventListener("error", handleError);
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+    };
+
+    const applyPoster = (dataUrl) => {
+      videoPosterCache.set(src, dataUrl);
+      if (!isCancelled) {
+        setPoster(dataUrl);
+      }
+    };
+
+    const captureFrame = () => {
+      if (!video.videoWidth || !video.videoHeight) {
+        handleError();
+        return;
+      }
+
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const context = canvas.getContext("2d");
+      if (!context) {
+        handleError();
+        return;
+      }
+
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      applyPoster(canvas.toDataURL("image/jpeg", 0.82));
+    };
+
+    const handleLoadedData = () => {
+      if (video.readyState < 2) {
+        return;
+      }
+
+      const targetTime = Math.min(
+        Math.max(video.duration * 0.1, 0.15),
+        1,
+      );
+
+      if (Number.isFinite(targetTime) && targetTime > 0) {
+        video.currentTime = targetTime;
+        return;
+      }
+
+      captureFrame();
+    };
+
+    const handleError = () => {
+      if (!isCancelled) {
+        setPoster(null);
+      }
+    };
+
+    video.preload = "auto";
+    video.muted = true;
+    video.playsInline = true;
+    video.src = src;
+    video.addEventListener("loadeddata", handleLoadedData);
+    video.addEventListener("seeked", captureFrame);
+    video.addEventListener("error", handleError);
+    video.load();
+
+    return () => {
+      isCancelled = true;
+      cleanup();
+    };
+  }, [src]);
+
+  if (poster) {
+    return <img className="testimonial-video-preview" src={poster} alt={alt} loading="lazy" />;
+  }
+
+  return <div className="testimonial-video-preview testimonial-video-preview-placeholder" aria-hidden="true" />;
+}
 
 function VideoSlider({ videos, onOpen }) {
   const sliderRef = useRef(null);
@@ -55,9 +149,10 @@ function VideoSlider({ videos, onOpen }) {
           >
             <div className="testimonial-video">
               {vid.video && (
-                <video muted playsInline preload="metadata">
-                  <source src={vid.video} type="video/mp4" />
-                </video>
+                <VideoPreview
+                  src={vid.video}
+                  alt={`${vid.title} - ${vid.name}`}
+                />
               )}
               <div className="video-play-center">
                 <Play size={20} fill="currentColor" />

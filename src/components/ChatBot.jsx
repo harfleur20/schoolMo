@@ -1,8 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { MessageCircle, X, Headphones, ArrowRight } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { WhatsAppIcon } from "./BrandIcons";
 import { whatsappBaseLink } from "../siteData";
+
+const MotionBackdrop = motion.button;
+const MotionPanel = motion.div;
 
 function waLink(message) {
   return `${whatsappBaseLink}?text=${encodeURIComponent(message)}`;
@@ -16,7 +20,7 @@ function waLink(message) {
 
 const FLOW = {
   start: {
-    bot: "Bonjour ! Je suis l'assistant SchoolMo 👋\nComment puis-je t'aider ?",
+    bot: "Bonjour ! Je suis Francis, l'assistant SchoolMo 👋\nComment puis-je t'aider ?",
     options: [
       { label: "Suis-je éligible ?", next: "eligibility" },
       { label: "Comment ça marche ?", next: "howItWorks" },
@@ -145,14 +149,7 @@ export function ChatBot() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, typing]);
 
-  useEffect(() => {
-    if (open && !hasInitialized.current) {
-      hasInitialized.current = true;
-      triggerNode("start", null);
-    }
-  }, [open]);
-
-  function triggerNode(nodeKey, userLabel) {
+  const triggerNode = useCallback((nodeKey, userLabel) => {
     const node = FLOW[nodeKey];
     if (!node) return;
 
@@ -167,6 +164,37 @@ export function ChatBot() {
       setMessages((prev) => [...prev, { from: "bot", text: node.bot }]);
       setOptions(node.options);
     }, BOT_DELAY);
+  }, []);
+
+  useEffect(() => {
+    if (!open || typeof window === "undefined") {
+      return undefined;
+    }
+
+    const isMobile = window.matchMedia("(max-width: 560px)").matches;
+    if (!isMobile) {
+      return undefined;
+    }
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, [open]);
+
+  function handleToggle() {
+    if (!open && !hasInitialized.current) {
+      hasInitialized.current = true;
+      triggerNode("start", null);
+    }
+
+    setOpen((current) => !current);
   }
 
   function handleOption(option) {
@@ -204,8 +232,8 @@ export function ChatBot() {
         { from: "user", text: option.label },
         {
           from: "bot",
-          text: "Un conseiller va te répondre rapidement. Clique ci-dessous pour ouvrir WhatsApp 👇",
-          ctaWhatsapp: { label: "Ouvrir WhatsApp", href: waLink(option.waMsg) },
+          text: "Un conseiller va te répondre rapidement. Clique ci-dessous pour le contacter sur WhatsApp.",
+          ctaWhatsapp: { label: "Contacter un conseiller", href: waLink(option.waMsg) },
         },
       ]);
       setOptions([{ label: "← Menu principal", next: "start" }]);
@@ -217,95 +245,120 @@ export function ChatBot() {
 
   return (
     <>
+      <AnimatePresence>
+        {open && (
+          <MotionBackdrop
+            className="chatbot-backdrop"
+            type="button"
+            aria-label="Fermer l'assistant"
+            onClick={() => setOpen(false)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+          />
+        )}
+      </AnimatePresence>
+
       <button
         className={`chatbot-bubble ${open ? "is-open" : ""}`}
         type="button"
-        aria-label={open ? "Fermer l'assistant" : "Ouvrir l'assistant SchoolMo"}
-        onClick={() => setOpen((v) => !v)}
+        aria-label={open ? "Fermer Francis" : "Ouvrir Francis, l'assistant SchoolMo"}
+        onClick={handleToggle}
       >
         {open ? <X size={22} /> : <MessageCircle size={22} />}
       </button>
 
-      {open && (
-        <div className="chatbot-panel" role="dialog" aria-label="Assistant SchoolMo">
-          <div className="chatbot-header">
-            <div className="chatbot-header-brand">
-              <div className="chatbot-avatar" aria-hidden="true">
-                <Headphones size={20} />
+      <AnimatePresence>
+        {open && (
+          <MotionPanel
+            className="chatbot-panel"
+            role="dialog"
+            aria-label="Assistant SchoolMo"
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 12, scale: 0.98 }}
+            transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="chatbot-header">
+              <div className="chatbot-header-brand">
+                <div className="chatbot-avatar" aria-hidden="true">
+                  <Headphones size={20} />
+                </div>
+                <div>
+                  <strong>Assistant SchoolMo</strong>
+                  <span>Répond en quelques secondes</span>
+                </div>
               </div>
-              <div>
-                <strong>Assistant SchoolMo</strong>
-                <span>Répond en quelques secondes</span>
-              </div>
+              <button
+                className="chatbot-close"
+                type="button"
+                aria-label="Fermer"
+                onClick={() => setOpen(false)}
+              >
+                <X size={18} />
+              </button>
             </div>
-            <button
-              className="chatbot-close"
-              type="button"
-              aria-label="Fermer"
-              onClick={() => setOpen(false)}
-            >
-              <X size={18} />
-            </button>
-          </div>
 
-          <div className="chatbot-messages">
-            {messages.map((msg, i) => (
-              <div key={i} className={`chatbot-msg chatbot-msg--${msg.from}`}>
-                <p>{msg.text}</p>
-                {msg.cta && (
-                  <NavLink
-                    className="chatbot-cta-btn"
-                    to={msg.cta.to}
-                    onClick={() => setOpen(false)}
-                  >
-                    {msg.cta.label}
-                    <ArrowRight size={14} />
-                  </NavLink>
-                )}
-                {msg.ctaWhatsapp && (
-                  <a
-                    className="chatbot-cta-btn chatbot-cta-btn--wa"
-                    href={msg.ctaWhatsapp.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <WhatsAppIcon width={16} height={16} />
-                    {msg.ctaWhatsapp.label}
-                  </a>
-                )}
-              </div>
-            ))}
+            <div className="chatbot-messages">
+              {messages.map((msg, i) => (
+                <div key={i} className={`chatbot-msg chatbot-msg--${msg.from}`}>
+                  <p>{msg.text}</p>
+                  {msg.cta && (
+                    <NavLink
+                      className="chatbot-cta-btn"
+                      to={msg.cta.to}
+                      onClick={() => setOpen(false)}
+                    >
+                      {msg.cta.label}
+                      <ArrowRight size={14} />
+                    </NavLink>
+                  )}
+                  {msg.ctaWhatsapp && (
+                    <a
+                      className="chatbot-cta-btn chatbot-cta-btn--wa"
+                      href={msg.ctaWhatsapp.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <WhatsAppIcon width={16} height={16} />
+                      {msg.ctaWhatsapp.label}
+                    </a>
+                  )}
+                </div>
+              ))}
 
-            {typing && (
-              <div className="chatbot-msg chatbot-msg--bot chatbot-typing">
-                <span />
-                <span />
-                <span />
+              {typing && (
+                <div className="chatbot-msg chatbot-msg--bot chatbot-typing">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              )}
+
+              <div ref={messagesEndRef} />
+            </div>
+
+            {options.length > 0 && (
+              <div className="chatbot-options">
+                {options.map((opt) => (
+                  <button
+                    key={opt.label}
+                    type="button"
+                    className={`chatbot-option-btn${opt.next === "cta_whatsapp" ? " chatbot-option-btn--wa" : ""}`}
+                    onClick={() => handleOption(opt)}
+                  >
+                    {opt.next === "cta_whatsapp" && (
+                      <WhatsAppIcon width={13} height={13} />
+                    )}
+                    {opt.label}
+                  </button>
+                ))}
               </div>
             )}
-
-            <div ref={messagesEndRef} />
-          </div>
-
-          {options.length > 0 && (
-            <div className="chatbot-options">
-              {options.map((opt) => (
-                <button
-                  key={opt.label}
-                  type="button"
-                  className={`chatbot-option-btn${opt.next === "cta_whatsapp" ? " chatbot-option-btn--wa" : ""}`}
-                  onClick={() => handleOption(opt)}
-                >
-                  {opt.next === "cta_whatsapp" && (
-                    <WhatsAppIcon width={13} height={13} />
-                  )}
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
+          </MotionPanel>
+        )}
+      </AnimatePresence>
     </>
   );
 }

@@ -25,6 +25,8 @@ import edcLogo from "../Assets/EDC_PARIS_BUSINESS_SCHOOL_LOGO_MONOCHROME_BLEU.pn
 import isenLogo from "../Assets/ISEN_Méditerranée_Logo.png";
 import temoignageVideo1 from "../Assets/temoignage_1.mp4";
 import temoignageVideo2 from "../Assets/temoignage_2.mp4";
+import temoignageVideo3 from "../Assets/video_temoignage_3.mp4";
+import temoignageVideo4 from "../Assets/video_temoignage_4.mp4";
 import heroSlideVisa from "../Assets/schhollMo_image.webp";
 import heroSlideSupport from "./assets/hero-slide-support.jpeg";
 import heroSlideStudents from "/Assets/women-traveling-together-paris.webp";
@@ -372,38 +374,38 @@ export const videoTestimonials = [
   },
   {
     id: "vid-2",
-    title: "À 41 ans, j'ai obtenu mon visa étudiant",
-    name: "Paul N.",
-    info: "36 ans | Yaoundé → Bordeaux",
+    title: "Mon Visa obtenu du premier coup",
+    name: "Océanne.",
+    info: "23 ans | Yaoundé → Bordeaux",
     video: temoignageVideo2,
   },
   {
     id: "vid-3",
-    title: "Mon dossier accepté du premier coup",
-    name: "Stéphanie M.",
-    info: "32 ans | Douala → Paris",
-    video: null,
+    title: "Mon dossier accepté après plusieurs refus.",
+    name: "Arlette.",
+    info: "36 ans | Guinée E. → Lyon",
+    video: temoignageVideo3,
   },
   {
     id: "vid-4",
-    title: "En reconversion à 39 ans — c'est possible",
+    title: "Visa obtenu après 4 refus de visa.",
     name: "Christine T.",
-    info: "39 ans | Douala → Nantes",
-    video: null,
+    info: "32 ans | Douala → Nantes",
+    video: temoignageVideo4,
   },
   {
     id: "vid-5",
     title: "Ce que personne ne m'avait dit sur le visa",
     name: "Kevin A.",
     info: "46 ans | Yaoundé → Toulouse",
-    video: null,
+    video: temoignageVideo1,
   },
   {
     id: "vid-6",
     title: "SchoolMo m'a sauvé d'une arnaque",
     name: "Mireille E.",
     info: "34 ans | Douala → Rennes",
-    video: null,
+    video: temoignageVideo3,
   },
 ];
 
