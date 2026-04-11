@@ -463,6 +463,7 @@ textarea {
   position: absolute;
   inset: 0;
   opacity: 0;
+  z-index: 0;
   transition: opacity 0.75s ease;
   background-image:
     linear-gradient(
@@ -476,11 +477,13 @@ textarea {
     var(--hero-image);
   background-size: cover;
   background-position: var(--hero-position, 72% center);
-  will-change: opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .hero-slide-bg.is-active {
   opacity: 1;
+  z-index: 1;
 }
 
 .hero-stage::before {
