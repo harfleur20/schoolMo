@@ -42,7 +42,7 @@ export function PageIntro({
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${bgImage})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              backgroundAttachment: "fixed",
+              backgroundAttachment: "scroll",
             }
           : {}
       }

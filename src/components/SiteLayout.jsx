@@ -4,6 +4,7 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import logo from "../../Assets/logo_site_web.png";
 import { WhatsAppIcon } from "./BrandIcons";
+import { ChatBot } from "./ChatBot";
 import {
   footerColumns,
   footerMetaLinks,
@@ -203,6 +204,8 @@ export function SiteLayout() {
       <main className="site-main">
         <Outlet />
       </main>
+
+      <ChatBot />
 
       <footer className="site-footer">
         <div className="section-shell footer-layout">
