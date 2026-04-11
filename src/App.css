@@ -474,8 +474,8 @@ textarea {
       rgba(7, 23, 40, 0.1) 100%
     ),
     var(--hero-image);
-  background-size: cover, cover;
-  background-position: center center, var(--hero-position, 72% center);
+  background-size: cover;
+  background-position: var(--hero-position, 72% center);
   will-change: opacity;
 }
 
@@ -4069,10 +4069,6 @@ textarea {
   .hero-stage {
     min-height: 100vh;
     min-height: 100svh;
-  }
-
-  .hero-slide-bg {
-    background-size: cover, var(--hero-mobile-size, cover);
   }
 
   .hero-stage-inner {
